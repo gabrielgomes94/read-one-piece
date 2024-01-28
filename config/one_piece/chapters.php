@@ -1,0 +1,30 @@
+<?php
+
+return [
+    0 => 'Capítulo 00 - Strong World',
+    1 => 'Capítulo 01 - Romance Dawn',
+    2 => 'Capítulo 02 - O Garoto "Luffy do Chapéu de Palha"',
+    3 => 'Capítulo 03 - Zoro, O Caçador de Piratas',
+    4 => 'Capítulo 04 - O Capitão da Marinha Morgan, Braço de Machado',
+    5 => 'Capítulo 05 - O Rei dos Piratas e o Maior Espadachim',
+    6 => 'Capítulo 06 - Primeiro membro',
+    7 => 'Capítulo 07 - Amigos',
+    8 => 'Capítulo 08 - Nami aparece',
+    9 => 'Capítulo 09 - Femme fatale',
+    10 => 'Capítulo 10 - Incidente na taverna',
+    11 => 'Capítulo 11 - O vôo',
+    12 => 'Capítulo 12 - O cão',
+    13 => 'Capítulo 13 - O tesouro',
+    14 => 'Capítulo 14 - Imprudência',
+    15 => 'Capítulo 15 - O gongo',
+    16 => 'Capítulo 16 - Bando do Luffy versus Bando do Buggy',
+    17 => 'Capítulo 17 - Nível alto, nível baixo',
+    18 => 'Capítulo 18 - O pirata Buggy, "o palhaço"',
+    19 => 'Capítulo 19 - Akuma no mi',
+    20 => 'Capítulo 20 - A filosofia de uma ladra',
+    21 => 'Capítulo 21 - Moradores',
+    22 => 'Capítulo 22 - Criaturas estranhas',
+    23 => 'Capítulo 23 - O terrível Capitão Usopp',
+    24 => 'Capítulo 24 - Coisas que não podemos ignorar',
+];
+

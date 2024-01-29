@@ -5,6 +5,8 @@ import {NextButton} from "./NextButton.jsx";
 import {NextChapterButton} from "./NextChapterButton.jsx";
 import {PreviousChapterButton} from "./PreviousChapterButton.jsx";
 
+
+
 export default function Carousel({ images, nextChapterButton, previousChapterButton }) {
     const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -42,6 +44,7 @@ export default function Carousel({ images, nextChapterButton, previousChapterBut
     const previousButton = currentIndex === 0
         ? <PreviousChapterButton onClick={previousChapterButton} />
         : <PreviousButton onClick={handlePrevious} />
+
 
     return (
 

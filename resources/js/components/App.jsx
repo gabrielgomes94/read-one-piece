@@ -53,8 +53,6 @@ export function App() {
     return (
         <div className="w-full flex items-center bg-gray-100" >
             <div className="flex flex-col items-center justify-between w-full">
-                <h1 className="text-lg">Leia One Piece</h1>
-
                 <div className="flex flex-row items-center m-4 form-control w-full">
                     <PreviousChapterButton onClick={handlePreviousChapter} />
 

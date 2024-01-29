@@ -2,8 +2,10 @@ import React, {useState, useEffect} from "react";
 import {ChapterSelector} from "./ChapterSelector.jsx";
 import {PreviousButton} from "./PreviousButton.jsx";
 import {NextButton} from "./NextButton.jsx";
+import {NextChapterButton} from "./NextChapterButton.jsx";
+import {PreviousChapterButton} from "./PreviousChapterButton.jsx";
 
-export default function Carousel({ images }) {
+export default function Carousel({ images, nextChapterButton, previousChapterButton }) {
     const [currentIndex, setCurrentIndex] = useState(0)
 
     const handleNext = () => {
@@ -27,10 +29,27 @@ export default function Carousel({ images }) {
         }
     }
 
+    const handleKeyUp = (event) => {
+        if (event.key === 'a') {
+            console.log('oioi')
+        }
+    }
+
+    const nextButton = currentIndex + 1 === images.length
+        ? <NextChapterButton onClick={nextChapterButton} />
+        : <NextButton onClick={handleNext} />
+
+    const previousButton = currentIndex === 0
+        ? <PreviousChapterButton onClick={previousChapterButton} />
+        : <PreviousButton onClick={handlePrevious} />
+
     return (
-        <div className="flex flex-col items-center justify-between w-full">
+
+        <div className="flex flex-col items-center justify-between w-full"
+             onKeyPress={handleKeyUp}
+        >
             <div className="carousel flex flex-row justify-between m-8 py-10 h-svh w-full">
-                <PreviousButton onClick={handlePrevious}  />
+                {previousButton}
 
                 <div className="mb-10">
                     <img
@@ -40,8 +59,7 @@ export default function Carousel({ images }) {
                     />
                 </div>
 
-
-                <NextButton onClick={handleNext} />
+                {nextButton}
             </div>
         </div>
     );

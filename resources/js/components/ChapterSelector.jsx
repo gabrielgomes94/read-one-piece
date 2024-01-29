@@ -13,6 +13,7 @@ export const ChapterSelector = (props) => {
             isSearchable={true}
             className="w-full"
             onChange={props.onChange}
+            value={props.selectedChapter}
         />
     )
 }

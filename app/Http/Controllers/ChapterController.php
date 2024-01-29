@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ChapterController extends Controller
 {
     public function get(string $chapterId): JsonResponse
     {
-//        dd($chapterId);
         $images = Storage::files('public/cap_' . $chapterId . '/');
 
         $imagesPresented = collect($images)->map(function ($image) {

@@ -10,6 +10,7 @@ export function App() {
     const [images, setImages] = useState([])
     const [chapters, setChapters] = useState([])
     const [selectedChapter, setSelectedChapter] = useState([])
+    const [currentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
         handleChapterSelection({value: "0001", label: "Capítulo 01 - Romance Dawn"})
@@ -19,7 +20,6 @@ export function App() {
                 setChapters(response.data.chapters)
             })
             .catch();
-
     }, []);
 
     const handleChapterSelection = (selectedOption) => {
@@ -39,15 +39,28 @@ export function App() {
     }
 
     const handleNextChapter = () => {
-        const value = parseInt(selectedChapter.value) + 1
+        setCurrentPage(0)
 
+        const value = parseInt(selectedChapter.value) + 1
         handleChapterSelection({value: padChapter(value)})
     }
 
     const handlePreviousChapter = () => {
-        const value = parseInt(selectedChapter.value) - 1
+        setCurrentPage(0)
 
+        const value = parseInt(selectedChapter.value) - 1
         handleChapterSelection({value: padChapter(value)})
+    }
+
+    const handleNextPage = () => {
+        currentPage + 1 === images.length
+            ? handleNextChapter()
+            : setCurrentPage((currentPage) => currentPage + 1)
+    }
+    const handlePreviousPage = () => {
+        currentPage - 1 < 0
+            ? handlePreviousChapter()
+            : setCurrentPage((currentPage) => currentPage - 1)
     }
 
     return (
@@ -67,8 +80,11 @@ export function App() {
 
                 <
                     Carousel images={images}
-                          nextChapterButton={handleNextChapter}
-                          previousChapterButton={handlePreviousChapter}
+                             handleNextChapter={handleNextChapter}
+                             handlePreviousChapter={handlePreviousChapter}
+                          currentPage={currentPage}
+                          handlePreviousPage={handlePreviousPage}
+                          handleNextPage={handleNextPage}
                 />
             </div>
         </div>

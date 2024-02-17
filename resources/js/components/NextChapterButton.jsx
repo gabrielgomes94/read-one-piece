@@ -1,7 +1,7 @@
 import React from "react";
 
 export const NextChapterButton = (props) => (
-    <div className="right hover:bg-gray-300 flex items-center rounded p-8"
+    <div className="right hover:bg-gray-300 flex items-center rounded p-8 m-8"
          onClick={props.onClick}>
 
         <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

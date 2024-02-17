@@ -1,7 +1,11 @@
 import React from "react";
 
 export const PreviousButton = (props) => (
-    <div className="left min-h-max hover:bg-gray-300 flex items-center rounded-l-lg p-8"
+    <div className="left
+    min-h-max
+    hover:bg-gray-300
+    flex items-center
+    rounded-l-lg p-8 m-8"
          onClick={props.onClick}>
         <svg
             xmlns="http://www.w3.org/2000/svg"

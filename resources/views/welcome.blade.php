@@ -13,7 +13,7 @@
         @viteReactRefresh
         @vite('resources/js/app.jsx')
     </head>
-    <body class="antialiased">
+    <body class="antialiased max-h-fit bg-purple-50 m-8">
         <div id="manga">
         </div>
     </body>

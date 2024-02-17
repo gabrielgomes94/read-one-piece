@@ -42,12 +42,12 @@ export default function Carousel(
 
     return (
         <div className="flex flex-col items-center justify-between w-full">
-            <div className="carousel flex flex-row justify-between m-8 py-10 h-svh w-full">
+            <div className="carousel flex flex-row  justify-between h-svh w-full object-fill">
                 {previousButton}
 
-                <div className="mb-10">
+                <div className="m-auto ">
                     <img
-                        className="size-fit"
+                        className="object-cover max-w-full max-h-full shadow-2xl mb-16"
                         key={currentPage}
                         src={images[currentPage]}
                     />

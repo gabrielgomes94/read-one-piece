@@ -64,7 +64,7 @@ export function App() {
     }
 
     return (
-        <div className="w-full flex items-center bg-gray-100" >
+        <div className="w-full flex items-center h-max" >
             <div className="flex flex-col items-center justify-between w-full">
                 <div className="flex flex-row items-center m-4 form-control w-full">
                     <PreviousChapterButton onClick={handlePreviousChapter} />

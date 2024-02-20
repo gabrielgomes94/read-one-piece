@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {createRoot} from "react-dom/client";
-import Carousel from "./Carousel.jsx";
+import Carousel from "./Carousel/Carousel.jsx";
 import axios from 'axios';
-import {ChapterSelector} from "./ChapterSelector.jsx";
-import {PreviousChapterButton} from "./PreviousChapterButton.jsx";
-import {NextChapterButton} from "./NextChapterButton.jsx";
+import {ChapterSelector} from "./ChapterSelector/ChapterSelector.jsx";
+import {PreviousChapterButton} from "./ChapterSelector/PreviousChapterButton.jsx";
+import {NextChapterButton} from "./ChapterSelector/NextChapterButton.jsx";
 
 export function App() {
     const [images, setImages] = useState([])
@@ -67,24 +67,22 @@ export function App() {
         <div className="w-full flex items-center h-max" >
             <div className="flex flex-col items-center justify-between w-full">
                 <div className="flex flex-row items-center m-4 form-control w-full">
-                    <PreviousChapterButton onClick={handlePreviousChapter} />
-
                     <ChapterSelector
                         onChange={handleChapterSelection}
                         options={chapters}
                         selectedChapter={selectedChapter}
+                        handleNextChapter={handleNextChapter}
+                        handlePreviousChapter={handlePreviousChapter}
                     />
-
-                    <NextChapterButton onClick={handleNextChapter} />
                 </div>
 
-                <
-                    Carousel images={images}
-                             handleNextChapter={handleNextChapter}
-                             handlePreviousChapter={handlePreviousChapter}
-                          currentPage={currentPage}
-                          handlePreviousPage={handlePreviousPage}
-                          handleNextPage={handleNextPage}
+                <Carousel
+                    images={images}
+                    handleNextChapter={handleNextChapter}
+                    handlePreviousChapter={handlePreviousChapter}
+                    currentPage={currentPage}
+                    handlePreviousPage={handlePreviousPage}
+                    handleNextPage={handleNextPage}
                 />
             </div>
         </div>

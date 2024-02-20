@@ -1,6 +1,6 @@
 import React from "react";
 
-export const PreviousButton = (props) => (
+export const PreviousPageButton = (props) => (
     <div className="left
     min-h-max
     hover:bg-gray-300

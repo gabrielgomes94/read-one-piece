@@ -15,7 +15,7 @@ export function App() {
     useEffect(() => {
         handleChapterSelection({value: "0001", label: "Capítulo 01 - Romance Dawn"})
 
-        axios.get('http://localhost/api/chapters')
+        axios.get(window.location.origin + '/api/chapters')
             .then(function (response) {
                 setChapters(response.data.chapters)
             })
@@ -26,7 +26,7 @@ export function App() {
         const data = chapters.filter(chapter => chapter['value'] === selectedOption.value)[0]
         setSelectedChapter(data ? data : selectedOption)
 
-        axios.get('http://localhost/api/cap/' + selectedOption.value)
+        axios.get(window.location.origin + '/api/cap/' + selectedOption.value)
             .then(function (response) {
                 setImages(response.data.images)
             })

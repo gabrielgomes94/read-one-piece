@@ -9,10 +9,10 @@ class ChapterController extends Controller
 {
     public function get(string $chapterId): JsonResponse
     {
-        $images = Storage::files('public/manga/cap_' . $chapterId . '/');
+        $images = Storage::files('manga/cap_' . $chapterId . '/');
 
         $imagesPresented = collect($images)->map(function ($image) {
-            $image = preg_replace('/public/', 'storage', $image);
+            $image = 'storage/' . $image;
 
             return asset($image);
         });

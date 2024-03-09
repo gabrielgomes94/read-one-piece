@@ -17,9 +17,7 @@ class ChapterController extends Controller
             return asset($image);
         });
 
-        return new JsonResponse([
-            'images' => $imagesPresented,
-        ]);
+        return new JsonResponse(['images' => $imagesPresented]);
     }
 
     public function listChapters(): JsonResponse
@@ -27,14 +25,14 @@ class ChapterController extends Controller
         $chapters = config('one_piece.chapters');
 
         foreach ($chapters as $key => $value) {
+            $chapterCode = str_pad($key, 4, '0', STR_PAD_LEFT);
+
             $data[] = [
-                'value' => str_pad($key, 4, '0', STR_PAD_LEFT),
-                'label' => $value,
+                'value' => $chapterCode,
+                'label' => "Capítulo $key - " . $value,
             ];
         }
 
-        return new JsonResponse([
-            'chapters' => $data ?? [],
-        ]);
+        return new JsonResponse(['chapters' => $data ?? []]);
     }
 }

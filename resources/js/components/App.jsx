@@ -24,7 +24,7 @@ export function App() {
 
     const handleChapterSelection = (selectedOption) => {
         const data = chapters.filter(chapter => chapter['value'] === selectedOption.value)[0]
-        setCurrentPage(0)
+        resetChapter()
         setSelectedChapter(data ? data : selectedOption)
 
         axios.get(window.location.origin + '/api/cap/' + selectedOption.value)
@@ -39,30 +39,32 @@ export function App() {
         return value.toString().padStart(4, '0')
     }
 
-    const handleNextChapter = () => {
-        setCurrentPage(0)
+    const goToNextChapter = () => {
+        resetChapter()
 
         const value = parseInt(selectedChapter.value) + 1
         handleChapterSelection({value: padChapter(value)})
     }
 
-    const handlePreviousChapter = () => {
-        setCurrentPage(0)
+    const goToPreviousChapter = () => {
+        resetChapter()
 
         const value = parseInt(selectedChapter.value) - 1
         handleChapterSelection({value: padChapter(value)})
     }
 
-    const handleNextPage = () => {
+    const goToNextPage = () => {
         currentPage + 1 === images.length
-            ? handleNextChapter()
+            ? goToNextChapter()
             : setCurrentPage((currentPage) => currentPage + 1)
     }
-    const handlePreviousPage = () => {
+    const goToPreviousPage = () => {
         currentPage - 1 < 0
-            ? handlePreviousChapter()
+            ? goToPreviousChapter()
             : setCurrentPage((currentPage) => currentPage - 1)
     }
+
+    const resetChapter = () => setCurrentPage(0)
 
     return (
         <div className="w-full flex items-center h-max" >
@@ -72,18 +74,18 @@ export function App() {
                         onChange={handleChapterSelection}
                         options={chapters}
                         selectedChapter={selectedChapter}
-                        handleNextChapter={handleNextChapter}
-                        handlePreviousChapter={handlePreviousChapter}
+                        handleNextChapter={goToNextChapter}
+                        handlePreviousChapter={goToPreviousChapter}
                     />
                 </div>
 
                 <Carousel
                     images={images}
-                    handleNextChapter={handleNextChapter}
-                    handlePreviousChapter={handlePreviousChapter}
+                    handleNextChapter={goToNextChapter}
+                    handlePreviousChapter={goToPreviousChapter}
                     currentPage={currentPage}
-                    handlePreviousPage={handlePreviousPage}
-                    handleNextPage={handleNextPage}
+                    handlePreviousPage={goToPreviousPage}
+                    handleNextPage={goToNextPage}
                 />
             </div>
         </div>

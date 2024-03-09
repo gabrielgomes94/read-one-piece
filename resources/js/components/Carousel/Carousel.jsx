@@ -16,11 +16,11 @@ export default function Carousel(
     ) {
     useEffect(() => {
         const keyDownHandler = event => {
-            if (event.key === 'ArrowRight') {
+            if (event.key === 'ArrowRight' || event.key === 'd') {
                 handleNextPage()
             }
 
-            if (event.key === 'ArrowLeft') {
+            if (event.key === 'ArrowLeft' || event.key === 'a') {
                 handlePreviousPage()
             }
         };
@@ -45,7 +45,7 @@ export default function Carousel(
             <div className="carousel flex flex-row  justify-between h-svh w-full object-fill">
                 {previousButton}
 
-                <div className="m-auto">
+                <div className="m-auto" onClick={handleNextPage}>
                     <img
                         className="object-cover max-w-full max-h-full shadow-2xl mb-16"
                         key={currentPage}

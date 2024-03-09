@@ -24,6 +24,7 @@ export function App() {
 
     const handleChapterSelection = (selectedOption) => {
         const data = chapters.filter(chapter => chapter['value'] === selectedOption.value)[0]
+        setCurrentPage(0)
         setSelectedChapter(data ? data : selectedOption)
 
         axios.get(window.location.origin + '/api/cap/' + selectedOption.value)

@@ -3,8 +3,6 @@ import {createRoot} from "react-dom/client";
 import Carousel from "./Carousel/Carousel.jsx";
 import axios from 'axios';
 import {ChapterSelector} from "./ChapterSelector/ChapterSelector.jsx";
-import {PreviousChapterButton} from "./ChapterSelector/PreviousChapterButton.jsx";
-import {NextChapterButton} from "./ChapterSelector/NextChapterButton.jsx";
 
 export function App() {
     const [images, setImages] = useState([])

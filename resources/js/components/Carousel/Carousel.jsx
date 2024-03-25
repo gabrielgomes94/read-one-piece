@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
-import {PreviousPageButton} from "./PreviousPageButton.jsx";
-import {NextPageButton} from "./NextPageButton.jsx";
-import {NextChapterButton} from "../ChapterSelector/NextChapterButton.jsx";
-import {PreviousChapterButton} from "../ChapterSelector/PreviousChapterButton.jsx";
+import {PageButton} from "./PageButton.jsx";
+import {ChapterButton} from "../ChapterSelector/ChapterButton.jsx";
 
 export default function Carousel(
     {
@@ -33,16 +31,16 @@ export default function Carousel(
     }, [currentPage]);
 
     const nextButton = currentPage + 1 === images.length
-        ? <NextChapterButton onClick={handleNextChapter} />
-        : <NextPageButton onClick={handleNextPage} />
+        ? <ChapterButton onClick={handleNextChapter} type={'next'} />
+        : <PageButton onClick={handleNextPage} type={'next'} />
 
     const previousButton = currentPage === 0
-        ? <PreviousChapterButton onClick={handlePreviousChapter} />
-        : <PreviousPageButton onClick={handlePreviousPage} />
+        ? <ChapterButton onClick={handlePreviousChapter} type={'prev'} />
+        : <PageButton onClick={handlePreviousPage} type={'prev'} />
 
     return (
         <div className="flex flex-col items-center justify-between w-full">
-            <div className="carousel flex flex-row  justify-between h-svh w-full object-fill">
+            <div className="carousel flex flex-row justify-between h-svh w-full object-fill">
                 {previousButton}
 
                 <div className="m-auto" onClick={handleNextPage}>

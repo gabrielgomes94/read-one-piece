@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import Select from 'react-select';
-import {PreviousChapterButton} from "./PreviousChapterButton.jsx";
-import {NextChapterButton} from "./NextChapterButton.jsx";
+import {ChapterButton} from "./ChapterButton.jsx";
 
 export const ChapterSelector = (
     {
@@ -19,7 +18,7 @@ export const ChapterSelector = (
 
     return (
         <>
-            <PreviousChapterButton onClick={handlePreviousChapter} />
+            <ChapterButton onClick={handlePreviousChapter} type={'prev'} />
 
             <Select options={options}
                     isSearchable={true}
@@ -28,7 +27,7 @@ export const ChapterSelector = (
                     value={selectedChapter}
             />
 
-            <NextChapterButton onClick={handleNextChapter} />
+            <ChapterButton onClick={handleNextChapter} type={'next'} />
         </>
     )
 }

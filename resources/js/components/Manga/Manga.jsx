@@ -1,23 +1,20 @@
 import React, {useEffect, useState} from "react";
-import {createRoot} from "react-dom/client";
-import Carousel from "./Carousel/Carousel.jsx";
-import axios from 'axios';
-import {ChapterSelector} from "./ChapterSelector/ChapterSelector.jsx";
-import {CoverStories} from "./CoverStories/CoverStories.jsx";
-import {Manga} from "./Manga/Manga.jsx";
+import axios from "axios";
+import {ChapterSelector} from "../ChapterSelector/ChapterSelector.jsx";
+import Carousel from "../Carousel/Carousel.jsx";
 
-export function App() {
+export function Manga({listChaptersURI}) {
     const [images, setImages] = useState([])
     const [chapters, setChapters] = useState([])
     const [selectedChapter, setSelectedChapter] = useState([])
     const [currentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
-        axios.get(window.location.origin + '/api/chapters')
+        axios.get(window.location.origin + '/api/' + listChaptersURI)
             .then(function (response) {
                 setChapters(response.data.chapters)
 
-                const firstChapter = response.data.chapters[2] // Chapter 0 is not the first one
+                const firstChapter = response.data.chapters[1] // Chapter 0 is not the first one
                 handleChapterSelection(
                     {
                         value: firstChapter.value,
@@ -33,7 +30,8 @@ export function App() {
         resetChapter()
         setSelectedChapter(data ? data : selectedOption)
 
-        axios.get(window.location.origin + '/api/cap/' + selectedOption.value)
+        const uri =  '/api/' + listChaptersURI + '/' + selectedOption.value
+        axios.get(window.location.origin + uri)
             .then(function (response) {
                 setImages(response.data.images)
             })
@@ -96,17 +94,4 @@ export function App() {
             </div>
         </div>
     )
-}
-
-if (document.getElementById('manga')) {
-    const container = document.getElementById('manga');
-    const root = createRoot(container);
-
-    root.render(<Manga listChaptersURI={'chapters'} />);
-    // root.render(<Manga listChaptersURI={'cover-stories'} />);
-} else if (document.getElementById('cover-story')) {
-    const container = document.getElementById('cover-story');
-    const root = createRoot(container);
-
-    root.render(<CoverStories />);
 }

@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/manga', function () {
+    return view('pages.manga');
+});
+
+Route::get('/historias-de-capa', function () {
+    return view('pages.cover-story');
+});

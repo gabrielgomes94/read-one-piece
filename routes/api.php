@@ -15,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/cap/{chapter_id}', [ChapterController::class, 'get']);
+Route::get('/chapters/{chapter_id}', [ChapterController::class, 'get']);
 Route::get('/chapters', [ChapterController::class, 'listChapters']);
+Route::get('/cover-stories', [ChapterController::class, 'listCoverStories']);
+Route::get('/cover-stories/{id}', [ChapterController::class, 'getCoverStory']);
+//Route::get('/sbs', [ChapterController::class, 'listSbs']);

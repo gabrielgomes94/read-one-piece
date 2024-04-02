@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/manga');
+});
+
+Route::get('/manga', function () {
+    return view('pages.manga');
+});
+
+Route::get('/historias-de-capa', function () {
+    return view('pages.cover-stories');
+});
+
+Route::get('/historias-de-capa/{id}', function (string $id) {
+    return view('pages.cover-story', [
+        'id' => $id,
+    ]);
 });

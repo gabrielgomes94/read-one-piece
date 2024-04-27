@@ -38,10 +38,18 @@ export default function Carousel(
         ? <ChapterButton onClick={handlePreviousChapter} type={'prev'} />
         : <PageButton onClick={handlePreviousPage} type={'prev'} />
 
+    console.log(window.screen.width)
+
     return (
         <div className="flex flex-col items-center justify-between w-full">
             <div className="carousel flex flex-row justify-between h-svh w-full object-fill">
-                {previousButton}
+
+                <div className="flex flex-row hidden lg:block">
+                    <div className="flex h-svh">
+                        {previousButton}
+                    </div>
+                </div>
+
 
                 <div className="m-auto" onClick={handleNextPage}>
                     <img
@@ -51,7 +59,11 @@ export default function Carousel(
                     />
                 </div>
 
-                {nextButton}
+                <div className="flex hidden lg:block">
+                    <div className="flex h-svh">
+                        {nextButton}
+                    </div>
+                </div>
             </div>
         </div>
     );

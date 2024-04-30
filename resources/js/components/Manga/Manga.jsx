@@ -78,7 +78,7 @@ export function Manga(
     return (
         <div className="w-full flex items-center h-max" >
             <div className="flex flex-col items-center justify-between w-full">
-                <div className="flex flex-row items-center m-4 form-control w-full">
+                <div className="flex flex-row items-center form-control w-full">
                     <ChapterSelector
                         onChange={handleChapterSelection}
                         options={chapters}

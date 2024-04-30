@@ -15,22 +15,7 @@
     </head>
 
     <body class="antialiased max-h-fit bg-gradient-to-r from-blue-100 via-blue-200 to-blue-100">
-        <div id="header" class="">
-            <div class="font-sans text-4xl text-pretty py-8 px-4 mb-8 bg-blue-800 text-white shadow-xl">
-                <menu class="flex gap-4">
-                    <li>
-                        <a href="/manga" class="hover:text-yellow-300">
-                            Mangá
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/historias-de-capa" class="hover:text-yellow-300">
-                            Histórias de Capa
-                        </a>
-                    </li>
-                </menu>
-            </div>
-        </div>
+        <x-header />
 
         {{ $slot }}
     </body>

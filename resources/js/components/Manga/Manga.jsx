@@ -45,12 +45,14 @@ export function Manga(
             });
     }
 
-    const handleSwipe = useCallback(({ deltaX }) => {
-        if (deltaX <= 0) {
-            goToNextPage()
-        } else {
-            goToPreviousPage()
+    const handleSwipe = useCallback(({ deltaX, deltaY }) => {
+        if (Math.abs(deltaX) <= Math.abs(deltaY)) {
+            return
         }
+
+        deltaX > 0
+            ? goToPreviousPage()
+            : goToNextPage()
     }, [currentPage])
 
 

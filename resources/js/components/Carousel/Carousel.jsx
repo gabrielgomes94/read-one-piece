@@ -50,19 +50,15 @@ export default function Carousel(
                     </div>
                 </div>
 
-
-
-                    <div className="m-auto" onClick={handleNextPage}>
-                        <Swiper onSwipe={onSwipe}>
-                            <img
-                                className="object-cover max-w-full max-h-full shadow-2xl mb-16"
-                                key={currentPage}
-                                src={images[currentPage]}
-                            />
-                        </Swiper>
-                    </div>
-
-
+                <div className="m-auto"  onClick={handleNextPage}>
+                    <Swiper onSwipe={onSwipe}>
+                        <img
+                            className="object-cover max-w-full max-h-full shadow-2xl mb-16"
+                            key={currentPage}
+                            src={images[currentPage]}
+                        />
+                    </Swiper>
+                </div>
 
                 <div className="flex hidden lg:block">
                     <div className="flex h-svh">

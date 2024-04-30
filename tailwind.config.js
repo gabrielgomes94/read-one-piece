@@ -6,7 +6,12 @@ export default {
       "./resources/**/*.jsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily: {
+            requiner: ["requiner"],
+            OnePiece: ["OnePiece"],
+        }
+    },
   },
   plugins: [],
 }

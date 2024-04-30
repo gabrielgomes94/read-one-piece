@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "requiner";
+    src: url("../fonts/requiner/Requiner-6RRLM.otf")
+}
+
+@font-face {
+    font-family: "OnePiece";
+    src: url("../fonts/one-piece/one-piece-font.ttf")
+}

@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import {PageButton} from "./PageButton.jsx";
 import {ChapterButton} from "../ChapterSelector/ChapterButton.jsx";
+import Swiper from "../Mobile/Swiper.jsx";
 
 export default function Carousel(
     {
@@ -9,7 +10,8 @@ export default function Carousel(
         handlePreviousChapter,
         currentPage,
         handleNextPage,
-        handlePreviousPage
+        handlePreviousPage,
+        onSwipe
     }
     ) {
     useEffect(() => {
@@ -38,8 +40,6 @@ export default function Carousel(
         ? <ChapterButton onClick={handlePreviousChapter} type={'prev'} />
         : <PageButton onClick={handlePreviousPage} type={'prev'} />
 
-    console.log(window.screen.width)
-
     return (
         <div className="flex flex-col items-center justify-between w-full">
             <div className="carousel flex flex-row justify-between h-svh w-full object-fill">
@@ -51,13 +51,18 @@ export default function Carousel(
                 </div>
 
 
-                <div className="m-auto" onClick={handleNextPage}>
-                    <img
-                        className="object-cover max-w-full max-h-full shadow-2xl mb-16"
-                        key={currentPage}
-                        src={images[currentPage]}
-                    />
-                </div>
+
+                    <div className="m-auto" onClick={handleNextPage}>
+                        <Swiper onSwipe={onSwipe}>
+                            <img
+                                className="object-cover max-w-full max-h-full shadow-2xl mb-16"
+                                key={currentPage}
+                                src={images[currentPage]}
+                            />
+                        </Swiper>
+                    </div>
+
+
 
                 <div className="flex hidden lg:block">
                     <div className="flex h-svh">

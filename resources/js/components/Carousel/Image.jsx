@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Loading from "./Loading.jsx";
 
 export default function Image(
@@ -8,6 +8,11 @@ export default function Image(
     }
 ) {
     const [loading, setLoading] = useState(true);
+
+    useEffect(
+        () => {setLoading(true)},
+        [currentPage]
+    )
 
     const imageLoaded = () => {setLoading(false)}
 

@@ -2,6 +2,7 @@ import React, {useEffect, Suspense} from "react";
 import {PageButton} from "./PageButton.jsx";
 import {ChapterButton} from "../ChapterSelector/ChapterButton.jsx";
 import Swiper from "../Mobile/Swiper.jsx";
+import Image from "./Image.jsx";
 
 export default function Carousel(
     {
@@ -52,13 +53,7 @@ export default function Carousel(
 
                 <div className="m-auto"  onClick={handleNextPage}>
                     <Swiper onSwipe={onSwipe}>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <img
-                                className="object-cover max-w-full max-h-full shadow-2xl mb-16"
-                                key={currentPage}
-                                src={images[currentPage]}
-                            />
-                        </Suspense>
+                        <Image currentPage={currentPage} source={images[currentPage]} />
                     </Swiper>
                 </div>
 

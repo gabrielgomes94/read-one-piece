@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {ChapterSelector} from "../ChapterSelector/ChapterSelector.jsx";
 import Carousel from "../Carousel/Carousel.jsx";
-import Swiper from "../Mobile/Swiper.jsx";
 
 export function Manga(
     {
@@ -19,8 +18,8 @@ export function Manga(
         axios.get(window.location.origin + '/api/' + listChaptersURI)
             .then(function (response) {
                 setChapters(response.data.chapters)
-
                 const firstChapter = response.data.chapters[chapterId ?? 1] // Chapter 0 is not the first one
+
                 handleChapterSelection(
                     {
                         value: firstChapter.value,
@@ -33,13 +32,14 @@ export function Manga(
 
     const handleChapterSelection = (selectedOption) => {
         const data = chapters.filter(chapter => chapter['value'] === selectedOption.value)[0]
-        resetChapter()
+        const uri =  '/api/' + listChaptersURI + '/' + selectedOption.value
+
         setSelectedChapter(data ? data : selectedOption)
 
-        const uri =  '/api/' + listChaptersURI + '/' + selectedOption.value
         axios.get(window.location.origin + uri)
             .then(function (response) {
                 setImages(response.data.images)
+                resetChapter()
             })
             .catch(function (error) {
             });
@@ -61,15 +61,11 @@ export function Manga(
     }
 
     const goToNextChapter = () => {
-        resetChapter()
-
         const value = parseInt(selectedChapter.value) + 1
         handleChapterSelection({value: padChapter(value)})
     }
 
     const goToPreviousChapter = () => {
-        resetChapter()
-
         const value = parseInt(selectedChapter.value) - 1
         handleChapterSelection({value: padChapter(value)})
     }
@@ -102,8 +98,6 @@ export function Manga(
 
                 <Carousel
                     images={images}
-                    handleNextChapter={goToNextChapter}
-                    handlePreviousChapter={goToPreviousChapter}
                     currentPage={currentPage}
                     handlePreviousPage={goToPreviousPage}
                     handleNextPage={goToNextPage}

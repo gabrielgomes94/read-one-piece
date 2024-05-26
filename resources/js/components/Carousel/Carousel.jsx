@@ -1,53 +1,30 @@
-import React, {useEffect, Suspense} from "react";
-import {PageButton} from "./PageButton.jsx";
-import {ChapterButton} from "../ChapterSelector/ChapterButton.jsx";
+import React from "react";
 import Swiper from "../Mobile/Swiper.jsx";
 import Image from "./Image.jsx";
+import useKeyboardInput from "../../hooks/useKeyboardInput.js"
+import {Next as NextButton} from "./Buttons/Next.jsx";
+import {Previous as PreviousButton} from "./Buttons/Previous.jsx";
 
 export default function Carousel(
     {
         images,
-        handleNextChapter,
-        handlePreviousChapter,
         currentPage,
         handleNextPage,
         handlePreviousPage,
         onSwipe
     }
-    ) {
-    useEffect(() => {
-        const keyDownHandler = event => {
-            if (event.key === 'ArrowRight' || event.key === 'd') {
-                handleNextPage()
-            }
-
-            if (event.key === 'ArrowLeft' || event.key === 'a') {
-                handlePreviousPage()
-            }
-        };
-
-        document.addEventListener('keydown', keyDownHandler);
-
-        return () => {
-            document.removeEventListener('keydown', keyDownHandler);
-        };
-    }, [currentPage]);
-
-    const nextButton = currentPage + 1 === images.length
-        ? <ChapterButton onClick={handleNextChapter} type={'next'} />
-        : <PageButton onClick={handleNextPage} type={'next'} />
-
-    const previousButton = currentPage === 0
-        ? <ChapterButton onClick={handlePreviousChapter} type={'prev'} />
-        : <PageButton onClick={handlePreviousPage} type={'prev'} />
+) {
+    useKeyboardInput(currentPage, handleNextPage, handlePreviousPage)
 
     return (
         <div className="flex flex-col items-center justify-between w-full">
             <div className="carousel flex flex-row justify-between h-svh w-full object-fill">
-
                 <div className="flex flex-row hidden lg:block">
                     <div className="flex h-svh">
-                        {previousButton}
+                        <PreviousButton
+                            currentPage={currentPage}
+                            handlePreviousPage={handlePreviousPage}
+                        />
                     </div>
                 </div>
 
@@ -59,7 +36,11 @@ export default function Carousel(
 
                 <div className="flex hidden lg:block">
                     <div className="flex h-svh">
-                        {nextButton}
+                        <NextButton
+                            currentPage={currentPage}
+                            images={images}
+                            handleNextPage={handleNextPage}
+                        />
                     </div>
                 </div>
             </div>

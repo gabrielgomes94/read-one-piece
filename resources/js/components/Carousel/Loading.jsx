@@ -1,9 +1,12 @@
 import React from "react";
-
-import {Loading as LoadingIcon} from "../Icons/Loading.jsx";
+import Lottie from "lottie-react";
+import animationData from "../../lotties/loading.json"
 
 export default function Loading({isLoading}) {
+
     return <div style={{display: isLoading ? "block" : "none"}}>
-        <LoadingIcon />
+        <Lottie
+            animationData={animationData}
+        />
     </div>
 }

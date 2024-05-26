@@ -10,11 +10,20 @@ export default function Image(
     const [loading, setLoading] = useState(true);
 
     useEffect(
-        () => {setLoading(true)},
+        () => {
+            setLoading(true);
+        },
         [currentPage]
     )
 
-    const imageLoaded = () => {setLoading(false)}
+    const imageLoaded = () => {
+        setTimeout(
+            () => {
+                setLoading(false)
+            },
+            50
+        )
+    }
 
     return <>
         <Loading isLoading={loading} />

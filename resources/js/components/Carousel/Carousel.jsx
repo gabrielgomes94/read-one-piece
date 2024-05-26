@@ -4,6 +4,7 @@ import Image from "./Image.jsx";
 import useKeyboardInput from "../../hooks/useKeyboardInput.js"
 import {Next as NextButton} from "./Buttons/Next.jsx";
 import {Previous as PreviousButton} from "./Buttons/Previous.jsx";
+import PageMarker from "./PageMarker.jsx";
 
 export default function Carousel(
     {
@@ -32,6 +33,10 @@ export default function Carousel(
                     <Swiper onSwipe={onSwipe}>
                         <Image currentPage={currentPage} source={images[currentPage]} />
                     </Swiper>
+
+                    <div className="flex justify-end mb-8">
+                        <PageMarker currentPage={currentPage} images={images} />
+                    </div>
                 </div>
 
                 <div className="flex hidden lg:block">

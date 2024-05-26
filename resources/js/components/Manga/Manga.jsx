@@ -6,13 +6,14 @@ import Carousel from "../Carousel/Carousel.jsx";
 export function Manga(
     {
         listChaptersURI,
-        chapterId = null
+        chapterId = null,
+        page = null
     }
 ) {
     const [images, setImages] = useState([])
     const [chapters, setChapters] = useState([])
     const [selectedChapter, setSelectedChapter] = useState([])
-    const [currentPage, setCurrentPage] = useState(0)
+    const [currentPage, setCurrentPage] = useState(page ?? 0)
 
     useEffect(() => {
         axios.get(window.location.origin + '/api/' + listChaptersURI)
@@ -39,7 +40,6 @@ export function Manga(
         axios.get(window.location.origin + uri)
             .then(function (response) {
                 setImages(response.data.images)
-                resetChapter()
             })
             .catch(function (error) {
             });
@@ -63,11 +63,13 @@ export function Manga(
     const goToNextChapter = () => {
         const value = parseInt(selectedChapter.value) + 1
         handleChapterSelection({value: padChapter(value)})
+        resetChapter()
     }
 
     const goToPreviousChapter = () => {
         const value = parseInt(selectedChapter.value) - 1
         handleChapterSelection({value: padChapter(value)})
+        resetChapter()
     }
 
     const goToNextPage = () => {

@@ -7,7 +7,8 @@ export function Manga(
     {
         listChaptersURI,
         chapterId = null,
-        page = null
+        page = null,
+        setCookie
     }
 ) {
     const [images, setImages] = useState([])
@@ -18,9 +19,10 @@ export function Manga(
     useEffect(() => {
         axios.get(window.location.origin + '/api/' + listChaptersURI)
             .then(function (response) {
-                setChapters(response.data.chapters)
-                const firstChapter = response.data.chapters[chapterId ?? 1] // Chapter 0 is not the first one
+                let data = response.data.chapters
+                const firstChapter = data[chapterId ?? 1] // Chapter 0 is not the first one
 
+                setChapters(data)
                 handleChapterSelection(
                     {
                         value: firstChapter.value,
@@ -36,6 +38,7 @@ export function Manga(
         const uri =  '/api/' + listChaptersURI + '/' + selectedOption.value
 
         setSelectedChapter(data ? data : selectedOption)
+        setChapterCookie(selectedOption.value)
 
         axios.get(window.location.origin + uri)
             .then(function (response) {
@@ -43,6 +46,11 @@ export function Manga(
             })
             .catch(function (error) {
             });
+    }
+
+    const handleChapterChange = (selectedOption) => {
+        handleChapterSelection(selectedOption)
+        resetChapter()
     }
 
     const handleSwipe = useCallback(({ deltaX, deltaY }) => {
@@ -73,28 +81,40 @@ export function Manga(
     }
 
     const goToNextPage = () => {
-        currentPage + 1 === images.length
-            ? goToNextChapter()
-            : setCurrentPage((currentPage) => currentPage + 1)
+        if (currentPage + 1 === images.length) {
+            goToNextChapter()
+        } else {
+            setCurrentPage((currentPage) => currentPage + 1)
+            setPageCookie()
+        }
     }
     const goToPreviousPage = () => {
-        currentPage - 1 < 0
-            ? goToPreviousChapter()
-            : setCurrentPage((currentPage) => currentPage - 1)
+        if (currentPage - 1 < 0) {
+            goToPreviousChapter()
+        } else {
+            setCurrentPage((currentPage) => currentPage - 1)
+            setPageCookie()
+        }
     }
 
-    const resetChapter = () => setCurrentPage(0)
+    const resetChapter = () => {
+        setCurrentPage(0)
+        setPageCookie()
+    }
+
+    const setPageCookie = () => { setCookie('page', currentPage) }
+    const setChapterCookie = (chapter) => { setCookie('chapter', parseInt(chapter)) }
 
     return (
         <div className="w-full flex items-center h-max" >
             <div className="flex flex-col items-center justify-between w-full">
                 <div className="flex flex-row items-center form-control w-full">
                     <ChapterSelector
-                        onChange={handleChapterSelection}
                         options={chapters}
                         selectedChapter={selectedChapter}
                         handleNextChapter={goToNextChapter}
                         handlePreviousChapter={goToPreviousChapter}
+                        changeChapter={handleChapterChange}
                     />
                 </div>
 

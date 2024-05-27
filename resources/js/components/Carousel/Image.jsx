@@ -29,7 +29,7 @@ export default function Image(
         <Loading isLoading={loading} />
 
         <img
-            className="object-cover max-w-full max-h-full shadow-2xl mb-16"
+            className="object-cover max-w-full max-h-full shadow-2xl mb-12"
             key={currentPage}
             src={source}
             onLoad={imageLoaded}

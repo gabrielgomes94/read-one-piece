@@ -1,21 +1,16 @@
-import React, {useState} from "react"
+import React from "react"
 import Select from 'react-select';
 import {ChapterButton} from "./ChapterButton.jsx";
 
 export const ChapterSelector = (
     {
-        onChange,
         options,
         selectedChapter,
         handleNextChapter,
-        handlePreviousChapter
-    }) => {
-    const [selectedItem, setSelectedItem] = useState()
-
-    const handle = (selectedOption) => {
-        setSelectedItem(selectedOption)
+        handlePreviousChapter,
+        changeChapter,
     }
-
+) => {
     return (
         <>
             <ChapterButton onClick={handlePreviousChapter} type={'prev'} />
@@ -23,7 +18,7 @@ export const ChapterSelector = (
             <Select options={options}
                     isSearchable={true}
                     className="w-full"
-                    onChange={onChange}
+                    onChange={changeChapter}
                     value={selectedChapter}
             />
 

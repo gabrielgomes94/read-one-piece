@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {ChapterSelector} from "../ChapterSelector/ChapterSelector.jsx";
 import Carousel from "../Carousel/Carousel.jsx";
@@ -52,17 +52,6 @@ export function Manga(
         handleChapterSelection(selectedOption)
         resetChapter()
     }
-
-    const handleSwipe = useCallback(({ deltaX, deltaY }) => {
-        if (Math.abs(deltaX) <= Math.abs(deltaY)) {
-            return
-        }
-
-        deltaX > 0
-            ? goToPreviousPage()
-            : goToNextPage()
-    }, [currentPage])
-
 
     const padChapter = (value) => {
         return value.toString().padStart(4, '0')
@@ -123,7 +112,6 @@ export function Manga(
                     currentPage={currentPage}
                     handlePreviousPage={goToPreviousPage}
                     handleNextPage={goToNextPage}
-                    onSwipe={handleSwipe}
                 />
             </div>
         </div>

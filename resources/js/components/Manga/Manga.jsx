@@ -6,50 +6,75 @@ import Carousel from "../Carousel/Carousel.jsx";
 export function Manga(
     {
         listChaptersURI,
-        chapterId = null,
-        page = null,
+        chapterId = 1,
+        page = 0,
         setCookie
     }
 ) {
     const [images, setImages] = useState([])
     const [chapters, setChapters] = useState([])
     const [selectedChapter, setSelectedChapter] = useState([])
-    const [currentPage, setCurrentPage] = useState(page ?? 0)
+    const [currentPage, setCurrentPage] = useState(parseInt(page))
 
+    /**
+     * List chapters
+     */
     useEffect(() => {
-        axios.get(window.location.origin + '/api/' + listChaptersURI)
-            .then(function (response) {
-                let data = response.data.chapters
-                const firstChapter = data[chapterId ?? 1] // Chapter 0 is not the first one
+        let ignore = false
 
-                setChapters(data)
-                handleChapterSelection(
-                    {
-                        value: firstChapter.value,
-                        label: firstChapter.label
+        axios.get(urlListChapterApi())
+            .then(
+                function (response) {
+                    if (!ignore) {
+                        const data = response.data.chapters
+                        setChapters(data)
                     }
-                )
-            })
+                }
+            )
             .catch();
+
+        return () => {
+            ignore = true
+        }
     }, []);
 
-    const handleChapterSelection = (selectedOption) => {
-        const data = chapters.filter(chapter => chapter['value'] === selectedOption.value)[0]
-        const uri =  '/api/' + listChaptersURI + '/' + selectedOption.value
+    /**
+     * Set initial chapter
+     */
+    useEffect(() => {
+        if (!chapters[chapterId]) {
+            return
+        }
 
-        setSelectedChapter(data ? data : selectedOption)
-        setChapterCookie(selectedOption.value)
+        handleChapterSelection(chapters[chapterId].value)
+    }, [chapters])
 
-        axios.get(window.location.origin + uri)
-            .then(function (response) {
+    const handleChapterSelection = (chapterValue) => {
+        if (!chapterValue) {
+            return;
+        }
+
+        const selectedChapterValue = padChapter(chapterValue)
+        const data = chapters.filter(chapter => chapter['value'] === selectedChapterValue)[0]
+
+        if (data.length === 0) {
+            return
+        }
+
+        setSelectedChapter(data)
+        setChapterCookie(selectedChapterValue)
+
+        axios.get(
+            urlGetChapterApi(selectedChapterValue)
+        ).then(
+            function (response) {
                 setImages(response.data.images)
-            })
-            .catch(function (error) {
-            });
+            }
+        ).catch(function (error) {});
     }
 
     const handleChapterChange = (selectedOption) => {
-        handleChapterSelection(selectedOption)
+        handleChapterSelection(selectedOption.value)
         resetChapter()
     }
 
@@ -59,13 +84,13 @@ export function Manga(
 
     const goToNextChapter = () => {
         const value = parseInt(selectedChapter.value) + 1
-        handleChapterSelection({value: padChapter(value)})
+        handleChapterSelection(padChapter(value))
         resetChapter()
     }
 
     const goToPreviousChapter = () => {
         const value = parseInt(selectedChapter.value) - 1
-        handleChapterSelection({value: padChapter(value)})
+        handleChapterSelection(padChapter(value))
         resetChapter()
     }
 
@@ -91,8 +116,10 @@ export function Manga(
         setPageCookie()
     }
 
-    const setPageCookie = () => { setCookie('page', currentPage) }
-    const setChapterCookie = (chapter) => { setCookie('chapter', parseInt(chapter)) }
+    const setPageCookie = () => { setCookie('page', currentPage, {path: '/'}) }
+    const setChapterCookie = (chapter) => { setCookie('chapter', parseInt(chapter), {path: '/'}) }
+    const urlGetChapterApi = (chapter) => window.location.origin + `/api/${listChaptersURI}/${chapter}`
+    const urlListChapterApi = () => window.location.origin + `/api/${listChaptersURI}`
 
     return (
         <div className="w-full flex items-center h-max" >

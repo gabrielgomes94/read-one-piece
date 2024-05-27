@@ -21,6 +21,15 @@ Route::get('/manga', function () {
     return view('pages.manga');
 });
 
+Route::get(
+    '/manga/{chapter?}/{page?}',
+    function (?string $chapter = '1', ?string $page = '0') {
+        return view('pages.manga', [
+            'chapter' => $chapter,
+            'page' => $page,
+        ]);
+    });
+
 Route::get('/historias-de-capa', function () {
     return view('pages.cover-stories');
 });

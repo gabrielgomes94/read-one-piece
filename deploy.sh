@@ -1,5 +1,6 @@
 #!/bin/bash
 
+git checkout .;
 git pull origin main;
 
 php artisan config:clear;

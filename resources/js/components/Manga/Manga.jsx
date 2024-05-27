@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {ChapterSelector} from "../ChapterSelector/ChapterSelector.jsx";
 import Carousel from "../Carousel/Carousel.jsx";
+import useFetchChaptersList from "../../hooks/useFetchChaptersList.js";
+import useInitialChapter from "../../hooks/useInitialChapter.js";
+import useChaptersFallback from "../../hooks/useChaptersFallback.js";
 
 export function Manga(
     {
@@ -16,61 +19,21 @@ export function Manga(
     const [selectedChapter, setSelectedChapter] = useState([])
     const [currentPage, setCurrentPage] = useState(parseInt(page))
 
-    /**
-     * List chapters
-     */
-    useEffect(() => {
-        let ignore = false
-
-        axios.get(urlListChapterApi())
-            .then(
-                function (response) {
-                    if (!ignore) {
-                        const data = response.data.chapters
-                        setChapters(data)
-                    }
-                }
-            )
-            .catch();
-
-        return () => {
-            ignore = true
-        }
-    }, []);
-
-    /**
-     * Set initial chapter
-     */
-    useEffect(() => {
-        if (!chapters[chapterId]) {
-            return
-        }
-
-        handleChapterSelection(chapters[chapterId].value)
-    }, [chapters])
-
     const handleChapterSelection = (chapterValue) => {
         if (!chapterValue) {
             return;
         }
 
-        const selectedChapterValue = padChapter(chapterValue)
-        const data = chapters.filter(chapter => chapter['value'] === selectedChapterValue)[0]
+        chapterValue = padChapter(chapterValue)
+        const data = chapters.filter(chapter => chapter['value'] === chapterValue)[0]
 
         if (data.length === 0) {
             return
         }
 
         setSelectedChapter(data)
-        setChapterCookie(selectedChapterValue)
-
-        axios.get(
-            urlGetChapterApi(selectedChapterValue)
-        ).then(
-            function (response) {
-                setImages(response.data.images)
-            }
-        ).catch(function (error) {});
+        setChapterCookie(chapterValue)
+        fetchChapterImages(chapterValue)
     }
 
     const handleChapterChange = (selectedOption) => {
@@ -118,8 +81,23 @@ export function Manga(
 
     const setPageCookie = () => { setCookie('page', currentPage, {path: '/'}) }
     const setChapterCookie = (chapter) => { setCookie('chapter', parseInt(chapter), {path: '/'}) }
-    const urlGetChapterApi = (chapter) => window.location.origin + `/api/${listChaptersURI}/${chapter}`
-    const urlListChapterApi = () => window.location.origin + `/api/${listChaptersURI}`
+
+    const fetchChapterImages = (chapter) => {
+        const urlGetChapterApi = window.location.origin + `/api/${listChaptersURI}/${chapter}`
+
+        axios.get(urlGetChapterApi)
+            .then(
+                function (response) {
+                    setImages(response.data.images)
+                }
+            ).catch(
+                function (error) {}
+            );
+    }
+
+    useFetchChaptersList(listChaptersURI, setChapters)
+    useInitialChapter(chapters,  chapterId, handleChapterSelection)
+    useChaptersFallback(chapterId, chapters, currentPage, images, resetChapter)
 
     return (
         <div className="w-full flex items-center h-max" >

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Loading from "./Loading.jsx";
 
-export default function Image(
+export default function Page(
     {
         currentPage,
         source

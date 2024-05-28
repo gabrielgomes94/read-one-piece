@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "./Image.jsx";
+import Page from "./Page.jsx";
 import useKeyboardInput from "../../hooks/useKeyboardInput.js"
 import {Share} from "./Buttons/Share.jsx";
 import ChapterNavigation from "./Navigation/ChapterNavigation.jsx";
@@ -26,7 +26,7 @@ export default function Chapter(
                 />
 
                 <div className="m-auto" onClick={handleNextPage}>
-                    <Image currentPage={currentPage} source={images[currentPage]}/>
+                    <Page currentPage={currentPage} source={images[currentPage]}/>
                 </div>
 
                 <ChapterNavigation

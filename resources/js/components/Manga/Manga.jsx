@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import {ChapterSelector} from "../ChapterSelector/ChapterSelector.jsx";
 import Carousel from "../Carousel/Carousel.jsx";
@@ -112,12 +112,16 @@ export function Manga(
                     />
                 </div>
 
-                <Carousel
-                    images={images}
-                    currentPage={currentPage}
-                    handlePreviousPage={goToPreviousPage}
-                    handleNextPage={goToNextPage}
-                />
+                <div className="flex flex-col justify-between object-fill h-svh">
+                    <Carousel
+                        images={images}
+                        chapterId={chapterId}
+                        currentPage={currentPage}
+                        handlePreviousPage={goToPreviousPage}
+                        handleNextPage={goToNextPage}
+                    />
+
+                </div>
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ChapterController extends Controller
 {
@@ -11,7 +12,18 @@ class ChapterController extends Controller
     {
         $images = Storage::files('manga/cap_' . $chapterId . '/');
 
-        $imagesPresented = collect($images)->map(function ($image) {
+        $images = collect($images)->sortBy(function ($image, $key) use ($chapterId) {
+            $v = Str::remove('manga/cap_' . $chapterId . '/', $image);
+            $v = preg_replace('/\..+/', '', $v);
+
+            return (int) $v;
+        })->toArray();
+
+        foreach ($images as $image){
+            $imagesSorted[] = $image;
+        }
+
+        $imagesPresented = collect($imagesSorted ?? [])->map(function ($image) {
             $image = 'storage/' . $image;
 
             return asset($image);

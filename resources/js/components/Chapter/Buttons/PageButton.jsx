@@ -1,6 +1,6 @@
 import React from "react";
-import {ArrowRight} from "../../Icons/ArrowRight.jsx";
-import {ArrowLeft} from "../../Icons/ArrowLeft.jsx";
+import arrowRight from "../../../../icons/arrow-right.svg"
+import arrowLeft from "../../../../icons/arrow-left.svg"
 
 export const PageButton = ({onClick, type}) => (
     <div className={
@@ -10,10 +10,6 @@ export const PageButton = ({onClick, type}) => (
     }
          onClick={onClick}
     >
-        {
-            type === 'next'
-                ? <ArrowRight />
-                : <ArrowLeft />
-        }
+        <img src={type === 'next' ? arrowRight : arrowLeft}/>
     </div>
 )

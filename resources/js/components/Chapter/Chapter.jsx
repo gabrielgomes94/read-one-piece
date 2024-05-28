@@ -4,7 +4,7 @@ import useKeyboardInput from "../../hooks/useKeyboardInput.js"
 import {Share} from "./Buttons/Share.jsx";
 import ChapterNavigation from "./Navigation/ChapterNavigation.jsx";
 
-export default function Carousel(
+export default function Chapter(
     {
         images,
         chapterId,

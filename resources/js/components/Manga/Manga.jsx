@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {ChapterSelector} from "../ChapterSelector/ChapterSelector.jsx";
-import Carousel from "../Carousel/Carousel.jsx";
+import Chapter from "../Chapter/Chapter.jsx";
 import useFetchChaptersList from "../../hooks/useFetchChaptersList.js";
 import useInitialChapter from "../../hooks/useInitialChapter.js";
 import useChaptersFallback from "../../hooks/useChaptersFallback.js";
@@ -113,7 +113,7 @@ export function Manga(
                 </div>
 
                 <div className="flex flex-col justify-between object-fill h-svh">
-                    <Carousel
+                    <Chapter
                         images={images}
                         chapterId={chapterId}
                         currentPage={currentPage}

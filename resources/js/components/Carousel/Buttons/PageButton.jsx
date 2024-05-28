@@ -1,6 +1,6 @@
 import React from "react";
-import {ArrowRight} from "../Icons/ArrowRight.jsx";
-import {ArrowLeft} from "../Icons/ArrowLeft.jsx";
+import {ArrowRight} from "../../Icons/ArrowRight.jsx";
+import {ArrowLeft} from "../../Icons/ArrowLeft.jsx";
 
 export const PageButton = ({onClick, type}) => (
     <div className={

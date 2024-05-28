@@ -1,5 +1,5 @@
 import {Previous as PreviousButton} from "../Buttons/Previous.jsx";
-import PageMarker from "../PageMarker.jsx";
+import PageMarker from "./PageMarker.jsx";
 import {Next as NextButton} from "../Buttons/Next.jsx";
 import React from "react";
 

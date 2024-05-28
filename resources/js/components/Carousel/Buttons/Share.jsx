@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {CopyToClipboard} from "react-copy-to-clipboard";
-import sharePageIcon from "../../../icons/share-page.svg"
-import shareChapterIcon from "../../../icons/share-chapter.svg"
+import sharePageIcon from "../../../../icons/share-page.svg"
+import shareChapterIcon from "../../../../icons/share-chapter.svg"
 
 export function Share(
     {

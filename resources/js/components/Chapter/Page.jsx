@@ -4,7 +4,8 @@ import Loading from "./Loading.jsx";
 export default function Page(
     {
         currentPage,
-        source
+        source,
+        chapterId
     }
 ) {
     const [loading, setLoading] = useState(true);
@@ -15,6 +16,17 @@ export default function Page(
         },
         [currentPage]
     )
+
+    // useEffect(
+    //     () => {
+    //         history.replaceState(
+    //             null,
+    //             null,
+    //             'manga?capitulo=' + chapterId + '&pagina=' + currentPage
+    //         )
+    //     },
+    //     [currentPage]
+    // )
 
     const imageLoaded = () => {
         setTimeout(

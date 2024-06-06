@@ -12,8 +12,8 @@ export const ChapterSelector = (
     }
 ) => {
     return (
-        <>
-            <ChapterButton onClick={handlePreviousChapter} type={'prev'} />
+        <div className="flex flex-row items-center form-control w-full bg-slate-200 shadow-2xl">
+            <ChapterButton onClick={handlePreviousChapter} type={'prev'}/>
 
             <Select options={options}
                     isSearchable={true}
@@ -22,7 +22,7 @@ export const ChapterSelector = (
                     value={selectedChapter}
             />
 
-            <ChapterButton onClick={handleNextChapter} type={'next'} />
-        </>
+            <ChapterButton onClick={handleNextChapter} type={'next'}/>
+        </div>
     )
 }

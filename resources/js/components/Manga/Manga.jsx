@@ -100,28 +100,23 @@ export function Manga(
     useChaptersFallback(chapterId, chapters, currentPage, images, resetChapter)
 
     return (
-        <div className="w-full flex items-center h-max" >
-            <div className="flex flex-col items-center justify-between w-full">
-                <div className="flex flex-row items-center form-control w-full">
-                    <ChapterSelector
-                        options={chapters}
-                        selectedChapter={selectedChapter}
-                        handleNextChapter={goToNextChapter}
-                        handlePreviousChapter={goToPreviousChapter}
-                        changeChapter={handleChapterChange}
-                    />
-                </div>
+        <div className="w-full h-max flex flex-col items-center">
+            <ChapterSelector
+                options={chapters}
+                selectedChapter={selectedChapter}
+                handleNextChapter={goToNextChapter}
+                handlePreviousChapter={goToPreviousChapter}
+                changeChapter={handleChapterChange}
+            />
 
-                <div className="flex flex-col justify-between object-fill h-svh">
-                    <Chapter
-                        images={images}
-                        chapterId={chapterId}
-                        currentPage={currentPage}
-                        handlePreviousPage={goToPreviousPage}
-                        handleNextPage={goToNextPage}
-                    />
-
-                </div>
+            <div className="flex flex-col justify-between object-fill h-svh">
+                <Chapter
+                    images={images}
+                    chapterId={chapterId}
+                    currentPage={currentPage}
+                    handlePreviousPage={goToPreviousPage}
+                    handleNextPage={goToNextPage}
+                />
             </div>
         </div>
     )

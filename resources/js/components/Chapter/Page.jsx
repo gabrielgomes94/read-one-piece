@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import Loading from "./Loading.jsx";
+import useHistoryUpdate from "../../hooks/useHistoryUpdate.js";
 
 export default function Page(
     {
         currentPage,
-        source
+        source,
+        chapterId
     }
 ) {
     const [loading, setLoading] = useState(true);
@@ -15,6 +17,8 @@ export default function Page(
         },
         [currentPage]
     )
+
+    useHistoryUpdate(chapterId, currentPage)
 
     const imageLoaded = () => {
         setTimeout(

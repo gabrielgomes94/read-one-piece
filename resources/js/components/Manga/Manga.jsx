@@ -9,8 +9,8 @@ import useChaptersFallback from "../../hooks/useChaptersFallback.js";
 export function Manga(
     {
         listChaptersURI,
-        chapterId = 1,
-        page = 0,
+        chapterId,
+        page,
         setCookie
     }
 ) {
@@ -18,6 +18,8 @@ export function Manga(
     const [chapters, setChapters] = useState([])
     const [selectedChapter, setSelectedChapter] = useState([])
     const [currentPage, setCurrentPage] = useState(parseInt(page))
+
+    console.log(currentPage)
 
     const handleChapterSelection = (chapterValue) => {
         if (!chapterValue) {
@@ -95,6 +97,10 @@ export function Manga(
             );
     }
 
+    const getChapterId = () => {
+        return parseInt(selectedChapter['value'] ?? 1)
+    }
+
     useFetchChaptersList(listChaptersURI, setChapters)
     useInitialChapter(chapters,  chapterId, handleChapterSelection)
     useChaptersFallback(chapterId, chapters, currentPage, images, resetChapter)
@@ -112,7 +118,7 @@ export function Manga(
             <div className="flex flex-col justify-between object-fill h-svh">
                 <Chapter
                     images={images}
-                    chapterId={chapterId}
+                    chapterId={getChapterId()}
                     currentPage={currentPage}
                     handlePreviousPage={goToPreviousPage}
                     handleNextPage={goToNextPage}

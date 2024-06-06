@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Page from "./Page.jsx";
 import useKeyboardInput from "../../hooks/useKeyboardInput.js"
 import {Share} from "./Buttons/Share.jsx";
@@ -26,7 +26,7 @@ export default function Chapter(
                 />
 
                 <div className="m-auto" onClick={handleNextPage}>
-                    <Page currentPage={currentPage} source={images[currentPage]}/>
+                    <Page currentPage={currentPage} source={images[currentPage]} chapterId={chapterId}/>
                 </div>
 
                 <ChapterNavigation

@@ -27,7 +27,7 @@ export function Share(
         <div className="flex flex-col align-end my-1">
             <div className="flex flex-row justify-end">
                 <CopyToClipboard
-                    text={window.location.origin + '/manga/' + chapterId}
+                    text={window.location.origin + '/manga?capitulo=' + chapterId}
                     onCopy={() => setShared(true)}
                 >
                     <div>
@@ -40,7 +40,7 @@ export function Share(
                 </CopyToClipboard>
 
                 <CopyToClipboard
-                    text={window.location.origin + '/manga/' + chapterId + '/' + currentPage}
+                    text={window.location.origin + '/manga?capitulo=' + chapterId + '&page=' + currentPage}
                     onCopy={() => setShared(true)}
                 >
                     <button className="bg-blue-800 p-2 ml-2 rounded text-white"

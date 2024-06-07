@@ -23,14 +23,12 @@ export function Share(
         [shared]
     )
 
-    const sharedLink = () => {
-        return window.location.origin + '/manga?capitulo=' + chapterId + '&page=' + currentPage
-    }
+    const sharedLink = window.location.origin + '/manga?capitulo=' + chapterId + '&page=' + currentPage
 
     return (
         <div className="flex">
             <CopyToClipboard
-                text={sharedLink()}
+                text={sharedLink}
                 onCopy={() => setShared(true)}
             >
                 <button className="bg-blue-800 p-2 rounded text-white"

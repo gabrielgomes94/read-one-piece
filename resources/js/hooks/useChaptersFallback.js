@@ -14,6 +14,10 @@ export default function useChaptersFallback(
      * Reset current page when it is greater than images length
      */
     useEffect(() => {
+        if (images.length === 0) {
+            return
+        }
+
         if (currentPage > images.length) {
             resetChapter()
         }

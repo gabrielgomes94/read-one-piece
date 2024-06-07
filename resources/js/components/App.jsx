@@ -8,7 +8,7 @@ export function App() {
     const mangaData = document.getElementById('manga-data');
 
     const chapter = () => {
-        if (cookies.chapter) {
+        if (cookies.chapter && window.location.search === '') {
             return cookies.chapter
         }
 
@@ -21,7 +21,7 @@ export function App() {
     }
 
     const page = () => {
-        if (cookies.page) {
+        if (cookies.page && window.location.search === '') {
             return parseInt(cookies.page)
         }
 

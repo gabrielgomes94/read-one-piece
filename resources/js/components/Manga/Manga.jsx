@@ -17,9 +17,7 @@ export function Manga(
     const [images, setImages] = useState([])
     const [chapters, setChapters] = useState([])
     const [selectedChapter, setSelectedChapter] = useState([])
-    const [currentPage, setCurrentPage] = useState(parseInt(page))
-
-    console.log(currentPage)
+    const [currentPage, setCurrentPage] = useState(page)
 
     const handleChapterSelection = (chapterValue) => {
         if (!chapterValue) {

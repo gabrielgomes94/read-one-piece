@@ -30,7 +30,7 @@ export default function Page(
     }
 
     return (
-        <div className="flex flex-col justify-between object-fill h-svh my-4 mx-16">
+        <div className="flex flex-col justify-between object-fill my-4 mx-4">
             <Loading isLoading={loading}/>
 
             <img

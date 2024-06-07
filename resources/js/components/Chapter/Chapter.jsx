@@ -25,8 +25,22 @@ export default function Chapter(
                     handlePreviousPage={handlePreviousPage}
                 />
 
-                <div className="m-auto" onClick={handleNextPage}>
-                    <Page currentPage={currentPage} source={images[currentPage]} chapterId={chapterId}/>
+                <div className="m-auto flex">
+                    <div onClick={handleNextPage}>
+                        <Page
+                            currentPage={currentPage}
+                            source={images[currentPage]}
+                            chapterId={chapterId}
+
+                        />
+                    </div>
+
+                    <div className="flex items-end mb-4 mr-4">
+                        <Share
+                            chapterId={chapterId}
+                            currentPage={currentPage}
+                        />
+                    </div>
                 </div>
 
                 <ChapterNavigation
@@ -35,13 +49,6 @@ export default function Chapter(
                     handleNextPage={handleNextPage}
                     handlePreviousPage={handlePreviousPage}
                 />
-
-                <div className="flex justify-around items-center m-auto">
-                    <Share
-                        chapterId={chapterId}
-                        currentPage={currentPage}
-                    />
-                </div>
             </div>
         </div>
     );

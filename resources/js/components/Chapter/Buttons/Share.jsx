@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {CopyToClipboard} from "react-copy-to-clipboard";
-import sharePageIcon from "../../../../icons/share-page.svg"
 import shareChapterIcon from "../../../../icons/share-chapter.svg"
+import { Tooltip } from 'react-tooltip'
 
 export function Share(
     {
@@ -23,37 +23,29 @@ export function Share(
         [shared]
     )
 
+    const sharedLink = () => {
+        return window.location.origin + '/manga?capitulo=' + chapterId + '&page=' + currentPage
+    }
+
     return (
-        <div className="flex flex-col align-end my-1">
-            <div className="flex flex-row justify-end">
-                <CopyToClipboard
-                    text={window.location.origin + '/manga?capitulo=' + chapterId}
-                    onCopy={() => setShared(true)}
+        <div className="flex">
+            <CopyToClipboard
+                text={sharedLink()}
+                onCopy={() => setShared(true)}
+            >
+                <button className="bg-blue-800 p-2 rounded text-white"
+                        title="Compartilhar página"
+                        data-tooltip-id="share-chapter-button"
                 >
-                    <div>
-                        <button className="bg-blue-800 p-2 mr-2 rounded text-white"
-                                title="Compartilhar capítulo"
-                        >
-                            <img src={shareChapterIcon} />
-                        </button>
-                    </div>
-                </CopyToClipboard>
+                    <img src={shareChapterIcon} />
+                </button>
+            </CopyToClipboard>
 
-                <CopyToClipboard
-                    text={window.location.origin + '/manga?capitulo=' + chapterId + '&page=' + currentPage}
-                    onCopy={() => setShared(true)}
-                >
-                    <button className="bg-blue-800 p-2 ml-2 rounded text-white"
-                            title="Compartilhar página"
-                    >
-                        <img src={sharePageIcon} />
-                    </button>
-                </CopyToClipboard>
-            </div>
-
-            <div className="flex flex-row justify-end my-2">
-                {shared && <span>Link copiado!</span>}
-            </div>
+            <Tooltip
+                id="share-chapter-button"
+                content="Link copiado!"
+                openOnClick={true}
+            />
         </div>
     )
 }

@@ -29,6 +29,6 @@ class MangaController extends Controller
     {
         return $request->query('page')
             ?? $request->query('pagina')
-            ?? 0;
+            ?? 1;
     }
 }

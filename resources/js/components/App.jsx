@@ -29,7 +29,7 @@ export function App() {
             return parseInt(mangaData.dataset.page)
         }
 
-        return 0
+        return 1
     }
 
     return (
@@ -37,7 +37,7 @@ export function App() {
             <Manga
                 listChaptersURI={'chapters'}
                 chapterId={chapter()}
-                page={page()}
+                page={page() - 1}
                 setCookie={setCookie}
             />
         </CookiesProvider>

@@ -18,7 +18,7 @@ export default function useChaptersFallback(
             return
         }
 
-        if (currentPage > images.length) {
+        if (currentPage > images.length || currentPage <= 0) {
             resetChapter()
         }
 

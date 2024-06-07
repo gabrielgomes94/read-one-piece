@@ -115,15 +115,14 @@ export function Manga(
                 changeChapter={handleChapterChange}
             />
 
-            <div className="flex flex-col justify-between object-fill h-svh">
-                <Chapter
-                    images={images}
-                    chapterId={getChapterId()}
-                    currentPage={currentPage}
-                    handlePreviousPage={goToPreviousPage}
-                    handleNextPage={goToNextPage}
-                />
-            </div>
+
+            <Chapter
+                images={images}
+                chapterId={getChapterId()}
+                currentPage={currentPage}
+                handlePreviousPage={goToPreviousPage}
+                handleNextPage={goToNextPage}
+            />
         </div>
     )
 }

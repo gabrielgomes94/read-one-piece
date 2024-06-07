@@ -29,15 +29,17 @@ export default function Page(
         )
     }
 
-    return <>
-        <Loading isLoading={loading} />
+    return (
+        <div className="flex flex-col justify-between object-fill h-svh my-4 mx-16">
+            <Loading isLoading={loading}/>
 
-        <img
-            className="object-cover max-w-full max-h-full shadow-2xl mb-4"
-            key={currentPage}
-            src={source}
-            onLoad={imageLoaded}
-            style={{display: loading ? "none" : "block"}}
-        />
-    </>
+            <img
+                className="object-cover max-w-full max-h-full shadow-2xl"
+                key={currentPage}
+                src={source}
+                onLoad={imageLoaded}
+                style={{display: loading ? "none" : "block"}}
+            />
+        </div>
+    )
 }

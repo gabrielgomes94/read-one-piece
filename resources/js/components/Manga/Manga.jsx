@@ -16,7 +16,7 @@ export function Manga(
 ) {
     const [images, setImages] = useState([])
     const [chapters, setChapters] = useState([])
-    const [selectedChapter, setSelectedChapter] = useState([])
+    const [currentChapter, setCurrentChapter] = useState([])
     const [currentPage, setCurrentPage] = useState(page)
 
     const handleChapterSelection = (chapterValue) => {
@@ -31,7 +31,7 @@ export function Manga(
             return
         }
 
-        setSelectedChapter(data)
+        setCurrentChapter(data)
         setChapterCookie(chapterValue)
         fetchChapterImages(chapterValue)
     }
@@ -46,13 +46,13 @@ export function Manga(
     }
 
     const goToNextChapter = () => {
-        const value = parseInt(selectedChapter.value) + 1
+        const value = parseInt(currentChapter.value) + 1
         handleChapterSelection(padChapter(value))
         resetChapter()
     }
 
     const goToPreviousChapter = () => {
-        const value = parseInt(selectedChapter.value) - 1
+        const value = parseInt(currentChapter.value) - 1
         handleChapterSelection(padChapter(value))
         resetChapter()
     }
@@ -96,7 +96,7 @@ export function Manga(
     }
 
     const getChapterId = () => {
-        return parseInt(selectedChapter['value'] ?? 1)
+        return parseInt(currentChapter['value'] ?? 1)
     }
 
     useFetchChaptersList(listChaptersURI, setChapters)
@@ -107,7 +107,7 @@ export function Manga(
         <div className="w-full h-max flex flex-col items-center">
             <ChapterSelector
                 options={chapters}
-                selectedChapter={selectedChapter}
+                selectedChapter={currentChapter}
                 handleNextChapter={goToNextChapter}
                 handlePreviousChapter={goToPreviousChapter}
                 changeChapter={handleChapterChange}

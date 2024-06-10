@@ -18,7 +18,7 @@ export default function useFetchChaptersList(
     }, []);
 
     const fetchChaptersList = (ignore) => {
-        axios.get(urlListChapterApi())
+        axios.get(urlListChapterApi)
             .then(
                 function (response) {
                     if (!ignore) {
@@ -30,5 +30,5 @@ export default function useFetchChaptersList(
             .catch();
     }
 
-    const urlListChapterApi = () => window.location.origin + `/api/${listChaptersURI}`
+    const urlListChapterApi = window.location.origin + `/api/${listChaptersURI}`
 }

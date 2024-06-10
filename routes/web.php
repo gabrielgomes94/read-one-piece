@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\MangaController;
+use App\Http\Controllers\Web\MangaController;
 use Illuminate\Support\Facades\Route;
 
 /*

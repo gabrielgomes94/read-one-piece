@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ChapterController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\CoverStoriesController;
+use App\Http\Controllers\Api\OnePieceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/chapters/{chapter_id}', [ChapterController::class, 'get']);
-Route::get('/chapters', [ChapterController::class, 'listChapters']);
-Route::get('/cover-stories', [ChapterController::class, 'listCoverStories']);
-Route::get('/cover-stories/{id}', [ChapterController::class, 'getCoverStory']);
+Route::get('/chapters/{chapter_id}', [OnePieceController::class, 'get']);
+Route::get('/chapters', [OnePieceController::class, 'listChapters']);
+Route::get('/colored/chapters/{chapter_id}', [OnePieceController::class, 'getColored']);
+Route::get('/cover-stories', [CoverStoriesController::class, 'listCoverStories']);
+Route::get('/cover-stories/{id}', [CoverStoriesController::class, 'getCoverStory']);
 //Route::get('/sbs', [ChapterController::class, 'listSbs']);

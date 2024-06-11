@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Str;
 
@@ -16,17 +17,31 @@ class Controller extends BaseController
         $images = collect($images)
             ->sortBy(
                 function ($image, $key) use ($directory) {
-                    $v = Str::remove($directory, $image);
-                    $v = preg_replace('/\..+/', '', $v);
+                    $chapter = Str::remove($directory, $image);
+                    $chapter = preg_replace('/\..+/', '', $chapter);
 
-                    return (int) $v;
+                    return (int) $chapter;
                 })
             ->toArray();
 
-        foreach ($images as $image){
+        foreach ($images as $image) {
             $imagesSorted[] = $image;
         }
 
-        return  $imagesSorted ?? [];
+        return $imagesSorted ?? [];
+    }
+
+    protected function getChapterFromQueryString(Request $request): int
+    {
+        return $request->query('chapter')
+            ?? $request->query('capitulo')
+            ?? 1;
+    }
+
+    protected function getPageFromQueryString(Request $request): int
+    {
+        return $request->query('page')
+            ?? $request->query('pagina')
+            ?? 1;
     }
 }

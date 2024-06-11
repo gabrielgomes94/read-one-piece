@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Leia One Piece</title>
+        <link rel="icon" href="{{ url('favicon.ico') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -42,7 +42,6 @@
             >
                 <x-footer />
             </div>
-
         </div>
     </body>
 </html>

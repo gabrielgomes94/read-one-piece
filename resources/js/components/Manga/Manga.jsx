@@ -104,7 +104,7 @@ export function Manga(
     useChaptersFallback(chapterId, chapters, currentPage, images, resetChapter)
 
     return (
-        <div className="w-full h-max flex flex-col items-center">
+        <div className="w-full flex flex-col items-center">
             <ChapterSelector
                 options={chapters}
                 selectedChapter={currentChapter}
@@ -112,7 +112,6 @@ export function Manga(
                 handlePreviousChapter={goToPreviousChapter}
                 changeChapter={handleChapterChange}
             />
-
 
             <Chapter
                 images={images}

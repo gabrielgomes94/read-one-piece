@@ -12,7 +12,9 @@ export default function ChapterNavigation(
     }
 ) {
     return (
-        <div className="flex justify-around items-center m-auto mb-2">
+        <div className="flex justify-around items-center m-auto mb-2"
+             id="chapter-navigation"
+        >
             <PreviousButton
                 currentPage={currentPage}
                 handlePreviousPage={handlePreviousPage}

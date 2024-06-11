@@ -14,9 +14,35 @@
         @vite('resources/js/app.jsx')
     </head>
 
-    <body class="antialiased max-h-fit bg-gradient-to-r from-blue-100 via-blue-200 to-blue-100">
-        <x-header />
+    <body class="antialiased min-h-screen
+                bg-gradient-to-r from-blue-100 via-blue-200 to-blue-100"
+          style="
+              min-height: 100vh;
+              display: grid;
+              grid-template-rows: 1fr auto;
+          "
+    >
+        <div class="relative">
+            <div class="">
+                <x-header />
+            </div>
 
-        {{ $slot }}
+            <div id="slot-container" class="pb-2" style="
+            /*margin-top: auto;*/
+            /*height: 1800px;*/
+            /*min-height: 100vh;*/
+            ">
+                {{ $slot }}
+            </div>
+
+
+            <div class="w-full"
+            style="grid-row-start: 2;
+  grid-row-end: 3;"
+            >
+                <x-footer />
+            </div>
+
+        </div>
     </body>
 </html>

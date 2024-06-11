@@ -1,6 +1,6 @@
 <div id="footer" class="">
     <div class="font-sans text-2xl text-pretty
-        py-8 px-4 mt-4
+        py-8 px-4
         bg-blue-800 text-white shadow-xl"
     >
         <menu class="flex flex-col gap-4">

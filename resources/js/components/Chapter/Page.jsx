@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Loading from "./Loading.jsx";
 import useHistoryUpdate from "../../hooks/useHistoryUpdate.js";
 
@@ -9,7 +9,7 @@ export default function Page(
         chapterId
     }
 ) {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
 
     useEffect(
         () => {
@@ -35,6 +35,7 @@ export default function Page(
 
             <img
                 className="object-cover max-w-full max-h-full shadow-2xl"
+                id="current-page"
                 key={currentPage}
                 src={source}
                 onLoad={imageLoaded}

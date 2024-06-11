@@ -1,5 +1,5 @@
 import React from "react";
-import {ChapterButton} from "../../ChapterSelector/ChapterButton.jsx";
+import {ChapterButton} from "../../ChapterSelector/Buttons/ChapterButton.jsx";
 import {PageButton} from "./PageButton.jsx";
 
 export function Next(

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
-import {ChapterSelector} from "../ChapterSelector/ChapterSelector.jsx";
-import Chapter from "../Chapter/Chapter.jsx";
+import {ChapterSelector} from "./ChapterSelector/ChapterSelector.jsx";
+import Chapter from "./Chapter/Chapter.jsx";
 import useFetchChaptersList from "../../hooks/useFetchChaptersList.js";
 import useInitialChapter from "../../hooks/useInitialChapter.js";
 import useChaptersFallback from "../../hooks/useChaptersFallback.js";

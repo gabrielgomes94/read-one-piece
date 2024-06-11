@@ -1,6 +1,6 @@
 import React from "react"
 import Select from 'react-select';
-import {ChapterButton} from "./ChapterButton.jsx";
+import {ChapterButton} from "./Buttons/ChapterButton.jsx";
 
 export const ChapterSelector = (
     {

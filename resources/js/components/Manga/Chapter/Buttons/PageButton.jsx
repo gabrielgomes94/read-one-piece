@@ -1,6 +1,6 @@
 import React from "react";
-import arrowRight from "../../../../icons/arrow-right.svg"
-import arrowLeft from "../../../../icons/arrow-left.svg"
+import arrowRight from "../../../../../icons/arrow-right.svg"
+import arrowLeft from "../../../../../icons/arrow-left.svg"
 
 export const PageButton = ({onClick, type}) => (
     <div className={

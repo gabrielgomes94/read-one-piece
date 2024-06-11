@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {CopyToClipboard} from "react-copy-to-clipboard";
-import shareChapterIcon from "../../../../icons/share-chapter.svg"
+import shareChapterIcon from "../../../../../icons/share-chapter.svg"
 import { Tooltip } from 'react-tooltip'
 
 export function Share(

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import Loading from "./Loading.jsx";
-import useHistoryUpdate from "../../hooks/useHistoryUpdate.js";
+import useHistoryUpdate from "../../../../hooks/useHistoryUpdate.js";
 
 export default function Page(
     {

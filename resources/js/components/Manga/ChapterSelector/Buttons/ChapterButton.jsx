@@ -1,6 +1,6 @@
 import React from "react";
-import doubleArrowRight from "../../../../../icons/double-arrow-right.svg"
-import doubleArrowLeft from "../../../../../icons/double-arrow-left.svg"
+import doubleArrowRight from "../../../../../icons/next-chapter-arrow.svg"
+import doubleArrowLeft from "../../../../../icons/prev-chapter-arrow.svg"
 
 export const ChapterButton = ({onClick, type}) => (
     <div

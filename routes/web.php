@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\CoverStoriesController;
 use App\Http\Controllers\Web\MangaController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,12 +21,6 @@ Route::get('/', function () {
 
 Route::get('/manga', [MangaController::class, 'get']);
 
-Route::get('/historias-de-capa', function () {
-    return view('pages.cover-stories');
-});
+Route::get('/historias-de-capa', [CoverStoriesController::class, 'list']);
 
-Route::get('/historias-de-capa/{id}', function (string $id) {
-    return view('pages.cover-story', [
-        'id' => $id,
-    ]);
-});
+Route::get('/historia-de-capa', [CoverStoriesController::class, 'get']);

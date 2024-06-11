@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-
+import {padChapter} from "../utils/padding.js";
 /**
  * Set initial chapter
  */
@@ -13,6 +13,10 @@ export default function useInitialChapter(
             return
         }
 
-        handleChapterSelection(chapters[chapterId].value)
+        const chapter = chapters.filter(
+            (chapter) => chapter.value === padChapter(chapterId)
+        )
+
+        handleChapterSelection(chapter[0].value)
     }, [chapters])
 }

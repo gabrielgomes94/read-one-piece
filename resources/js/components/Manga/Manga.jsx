@@ -5,6 +5,7 @@ import Chapter from "../Chapter/Chapter.jsx";
 import useFetchChaptersList from "../../hooks/useFetchChaptersList.js";
 import useInitialChapter from "../../hooks/useInitialChapter.js";
 import useChaptersFallback from "../../hooks/useChaptersFallback.js";
+import {padChapter} from "../../utils/padding.js";
 
 export function Manga(
     {
@@ -39,10 +40,6 @@ export function Manga(
     const handleChapterChange = (selectedOption) => {
         handleChapterSelection(selectedOption.value)
         resetChapter()
-    }
-
-    const padChapter = (value) => {
-        return value.toString().padStart(4, '0')
     }
 
     const goToNextChapter = () => {

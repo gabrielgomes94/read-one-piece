@@ -9,7 +9,7 @@ export default function useHistoryUpdate(chapterId, currentPage) {
             history.replaceState(
                 null,
                 null,
-                'manga?capitulo=' + chapterId + '&pagina=' + (currentPage + 1)
+                window.location.pathname + '?capitulo=' + chapterId + '&pagina=' + (currentPage + 1)
             )
         },
         [chapterId, currentPage]

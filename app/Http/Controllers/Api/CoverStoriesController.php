@@ -12,12 +12,12 @@ class CoverStoriesController extends Controller
     {
         $chapters = config('one_piece.cover_stories');
 
-        foreach ($chapters as $key => $value) {
-            $chapterCode = str_pad($key, 4, '0', STR_PAD_LEFT);
+        foreach ($chapters as $value) {
+            $chapterCode = str_pad($value['id'], 4, '0', STR_PAD_LEFT);
 
             $data[] = [
                 'value' => $chapterCode,
-                'label' => $value,
+                'label' => $value['name'],
             ];
         }
 
@@ -26,7 +26,8 @@ class CoverStoriesController extends Controller
 
     public function getCoverStory(string $id): JsonResponse
     {
-        $images = Storage::files('cover-stories/' . $id . '/');
+        $directory = preg_grep("/.$id./", Storage::directories('cover-stories'));
+        $images = Storage::files(array_shift($directory));
 
         $imagesPresented = collect($images)->map(function ($image) {
             $image = 'storage/' . $image;

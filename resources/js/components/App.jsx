@@ -2,9 +2,11 @@ import React from "react";
 import {Manga} from "./Manga/Manga.jsx";
 import { CookiesProvider, useCookies } from 'react-cookie'
 
-export function App() {
+export function App(
+    listChaptersURI = 'chapters',
+    // chapterId
+) {
     const [cookies, setCookie] = useCookies(['chapter', 'page'])
-
     const mangaData = document.getElementById('manga-data');
 
     const chapter = () => {
@@ -12,7 +14,7 @@ export function App() {
             return cookies.chapter
         }
 
-        if (mangaData.dataset.chapter) {
+        if (mangaData && mangaData.dataset.chapter) {
             return mangaData.dataset.chapter
         }
 
@@ -25,7 +27,7 @@ export function App() {
             return parseInt(cookies.page)
         }
 
-        if (mangaData.dataset.page) {
+        if (mangaData && mangaData.dataset.page) {
             return parseInt(mangaData.dataset.page)
         }
 
@@ -35,7 +37,7 @@ export function App() {
     return (
         <CookiesProvider>
             <Manga
-                listChaptersURI={'chapters'}
+                listChaptersURI={listChaptersURI['listChaptersURI']}
                 chapterId={chapter()}
                 page={page() - 1}
                 setCookie={setCookie}

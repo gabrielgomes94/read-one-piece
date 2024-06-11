@@ -30,7 +30,6 @@ export default function Chapter(
                         currentPage={currentPage}
                         source={images[currentPage]}
                         chapterId={chapterId}
-
                     />
                 </div>
 

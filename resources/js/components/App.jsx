@@ -1,17 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import {Manga} from "./Manga/Manga.jsx";
 import { CookiesProvider, useCookies } from 'react-cookie'
+import { getChapterCookie, getPageCookie } from '../utils/cookies.js';
 
 export function App(
-    listChaptersURI = 'chapters',
-    // chapterId
+    listChaptersURI
 ) {
-    const [cookies, setCookie] = useCookies(['chapter', 'page'])
+    const [uri, setUri] = useState(listChaptersURI['listChaptersURI'])
+    const [cookies, setCookie] = useCookies([uri + '_chapter', uri + '_page'])
     const mangaData = document.getElementById('manga-data');
 
     const chapter = () => {
-        if (cookies.chapter && window.location.search === '') {
-            return cookies.chapter
+        if (getChapterCookie(cookies, uri) && window.location.search === '') {
+            return getChapterCookie(cookies, uri)
         }
 
         if (mangaData && mangaData.dataset.chapter) {
@@ -23,8 +24,8 @@ export function App(
     }
 
     const page = () => {
-        if (cookies.page && window.location.search === '') {
-            return parseInt(cookies.page)
+        if (getPageCookie(cookies, uri) && window.location.search === '') {
+            return parseInt(getPageCookie(cookies, uri))
         }
 
         if (mangaData && mangaData.dataset.page) {

@@ -6,6 +6,7 @@ import useFetchChaptersList from "../../hooks/useFetchChaptersList.js";
 import useInitialChapter from "../../hooks/useInitialChapter.js";
 import useChaptersFallback from "../../hooks/useChaptersFallback.js";
 import {padChapter} from "../../utils/padding.js";
+import {chapterCookie, pageCookie} from '../../utils/cookies.js';
 
 export function Manga(
     {
@@ -76,8 +77,26 @@ export function Manga(
         setPageCookie()
     }
 
-    const setPageCookie = () => { setCookie('page', currentPage, {path: '/'}) }
-    const setChapterCookie = (chapter) => { setCookie('chapter', parseInt(chapter), {path: '/'}) }
+    const setPageCookie = () => {
+        setCookie(
+            pageCookie(listChaptersURI),
+            currentPage,
+            {
+                path: '/',
+                maxAge: 60*60*24*30
+            }
+        )
+    }
+    const setChapterCookie = (chapter) => {
+        setCookie(
+            chapterCookie(listChaptersURI),
+            parseInt(chapter),
+            {
+                path: '/',
+                maxAge: 60*60*24*30
+            }
+        )
+    }
 
     const fetchChapterImages = (chapter) => {
         const urlGetChapterApi = window.location.origin + `/api/${listChaptersURI}/${chapter}`

@@ -11,7 +11,7 @@ if (document.getElementById('manga')) {
 
     root.render(
         <CookiesProvider>
-            <App listChaptersURI='chapters' chapterId={1} />
+            <App listChaptersURI='chapters' />
         </CookiesProvider>
     );
 } else if (document.getElementById('cover-story')) {

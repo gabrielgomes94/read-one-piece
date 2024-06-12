@@ -8,19 +8,21 @@ export default function ChapterNavigation(
         images,
         currentPage,
         handleNextPage,
-        handlePreviousPage
+        handlePreviousPage,
+        setCurrentPage
     }
 ) {
     return (
-        <div className="flex justify-around items-center m-auto mb-2"
-             id="chapter-navigation"
-        >
+        <div className="flex justify-around items-center m-auto mb-2">
             <PreviousButton
                 currentPage={currentPage}
                 handlePreviousPage={handlePreviousPage}
             />
 
-            <PageMarker currentPage={currentPage} images={images}/>
+            <PageMarker currentPage={currentPage}
+                        images={images}
+                        setCurrentPage={setCurrentPage}
+            />
 
             <NextButton
                 currentPage={currentPage}

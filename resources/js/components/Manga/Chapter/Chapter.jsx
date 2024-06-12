@@ -10,7 +10,8 @@ export default function Chapter(
         chapterId,
         currentPage,
         handleNextPage,
-        handlePreviousPage
+        handlePreviousPage,
+        setCurrentPage
     }
 ) {
     useKeyboardInput(currentPage, handleNextPage, handlePreviousPage)
@@ -22,6 +23,7 @@ export default function Chapter(
                 images={images}
                 handleNextPage={handleNextPage}
                 handlePreviousPage={handlePreviousPage}
+                setCurrentPage={setCurrentPage}
             />
 
             <div className="m-auto flex">
@@ -46,6 +48,7 @@ export default function Chapter(
                 images={images}
                 handleNextPage={handleNextPage}
                 handlePreviousPage={handlePreviousPage}
+                setCurrentPage={setCurrentPage}
             />
         </div>
     );

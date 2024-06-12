@@ -116,6 +116,7 @@ export function Manga(
                 currentPage={currentPage}
                 handlePreviousPage={goToPreviousPage}
                 handleNextPage={goToNextPage}
+                setCurrentPage={setCurrentPage}
             />
         </div>
     )

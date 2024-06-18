@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\CoverStoriesController;
+use App\Http\Controllers\Web\DownloadController;
 use App\Http\Controllers\Web\MangaController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::get('/manga', [MangaController::class, 'get']);
 Route::get('/historias-de-capa', [CoverStoriesController::class, 'list']);
 
 Route::get('/historia-de-capa', [CoverStoriesController::class, 'get']);
+Route::get('/download', [DownloadController::class, 'get']);

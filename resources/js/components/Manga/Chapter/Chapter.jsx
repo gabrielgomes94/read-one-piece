@@ -3,6 +3,7 @@ import Page from "./Page/Page.jsx";
 import useKeyboardInput from "../../../hooks/useKeyboardInput.js"
 import {Share} from "./Buttons/Share.jsx";
 import ChapterNavigation from "./Navigation/ChapterNavigation.jsx";
+import {Download} from "./Buttons/Download.jsx";
 
 export default function Chapter(
     {
@@ -35,11 +36,19 @@ export default function Chapter(
                     />
                 </div>
 
-                <div className="flex items-end mb-4 mr-4">
-                    <Share
-                        chapterId={chapterId}
-                        currentPage={currentPage}
-                    />
+                <div className="flex flex-col justify-end items-end mb-4 mr-4">
+                    <div className="my-2">
+                        <Share
+                            chapterId={chapterId}
+                            currentPage={currentPage}
+                        />
+                    </div>
+
+                    <div className="mt-2">
+                        <Download
+                            chapterId={chapterId}
+                        />
+                    </div>
                 </div>
             </div>
 

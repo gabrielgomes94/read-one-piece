@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class Controller extends BaseController
@@ -18,7 +19,7 @@ class Controller extends BaseController
             ->sortBy(
                 function ($image, $key) use ($directory) {
                     $chapter = Str::remove($directory, $image);
-                    $chapter = preg_replace('/\..+/', '', $chapter);
+                    $chapter = preg_replace('/[^0-9]/', '', $chapter);
 
                     return (int) $chapter;
                 })
@@ -43,5 +44,14 @@ class Controller extends BaseController
         return $request->query('page')
             ?? $request->query('pagina')
             ?? 1;
+    }
+
+    protected function presentImages(array $imagesSorted): Collection
+    {
+        return  collect($imagesSorted)->map(function ($image) {
+            $image = 'storage/' . $image;
+
+            return asset($image);
+        });
     }
 }

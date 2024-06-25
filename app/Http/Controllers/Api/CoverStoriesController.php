@@ -27,13 +27,10 @@ class CoverStoriesController extends Controller
     public function getCoverStory(string $id): JsonResponse
     {
         $directory = preg_grep("/.$id./", Storage::directories('cover-stories'));
-        $images = Storage::files(array_shift($directory));
-
-        $imagesPresented = collect($images)->map(function ($image) {
-            $image = 'storage/' . $image;
-
-            return asset($image);
-        });
+        $directory = array_shift($directory);
+        $images = Storage::files($directory);
+        $imagesSorted = $this->sortImages($images, $directory);
+        $imagesPresented = $this->presentImages($imagesSorted);
 
         return new JsonResponse(['images' => $imagesPresented]);
     }

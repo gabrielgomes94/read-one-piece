@@ -13,12 +13,7 @@ class OnePieceController extends Controller
         $directory = "manga/cap_$chapterId/";
         $images = Storage::files($directory);
         $imagesSorted = $this->sortImages($images, $directory);
-
-        $imagesPresented = collect($imagesSorted)->map(function ($image) {
-            $image = 'storage/' . $image;
-
-            return asset($image);
-        });
+        $imagesPresented = $this->presentImages($imagesSorted);
 
         return new JsonResponse(['images' => $imagesPresented]);
     }
@@ -28,14 +23,8 @@ class OnePieceController extends Controller
         $chapterId = ltrim($chapterId, '0');
         $directory = "one_piece_colored/cap_$chapterId/";
         $images = Storage::files($directory);
-
         $imagesSorted = $this->sortImages($images, $directory);
-
-        $imagesPresented = collect($imagesSorted)->map(function ($image) {
-            $image = 'storage/' . $image;
-
-            return asset($image);
-        });
+        $imagesPresented = $this->presentImages($imagesSorted);
 
         return new JsonResponse(['images' => $imagesPresented]);
     }

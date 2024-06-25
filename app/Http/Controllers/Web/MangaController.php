@@ -19,4 +19,16 @@ class MangaController extends Controller
             ]
         );
     }
+
+    public function getColored(Request $request): View
+    {
+        return view(
+            'pages.manga',
+            [
+                'chapter' => $this->getChapterFromQueryString($request),
+                'page' => $this->getPageFromQueryString($request),
+                'colored' => true,
+            ]
+        );
+    }
 }

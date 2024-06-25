@@ -5,13 +5,24 @@ import {CookiesProvider} from "react-cookie";
 import {App} from "./components/App.jsx"
 import React from "react";
 
-if (document.getElementById('manga')) {
+const mangaData = document.getElementById('manga-data');
+
+if (document.getElementById('manga') && !mangaData.dataset.colored) {
     const container = document.getElementById('manga');
     const root = createRoot(container);
 
     root.render(
         <CookiesProvider>
             <App listChaptersURI='chapters' />
+        </CookiesProvider>
+    );
+} else if (mangaData && mangaData.dataset.colored) {
+    const container = document.getElementById('manga');
+    const root = createRoot(container);
+
+    root.render(
+        <CookiesProvider>
+            <App listChaptersURI='colored/chapters' />
         </CookiesProvider>
     );
 } else if (document.getElementById('cover-story')) {

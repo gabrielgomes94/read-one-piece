@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/chapters/{chapter_id}', [OnePieceController::class, 'get']);
 Route::get('/chapters', [OnePieceController::class, 'listChapters']);
+
 Route::get('/colored/chapters/{chapter_id}', [OnePieceController::class, 'getColored']);
+Route::get('/colored/chapters', [OnePieceController::class, 'listChapters']);
+
 Route::get('/cover-stories', [CoverStoriesController::class, 'listCoverStories']);
 Route::get('/cover-stories/{id}', [CoverStoriesController::class, 'getCoverStory']);
 //Route::get('/sbs', [ChapterController::class, 'listSbs']);

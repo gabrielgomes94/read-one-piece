@@ -11,7 +11,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/manga" class="hover:text-yellow-300">
+                    <a href="/manga-colorido" class="hover:text-yellow-300">
                         Mangá colorido (em inglês)
                     </a>
                 </li>

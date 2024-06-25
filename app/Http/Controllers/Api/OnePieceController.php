@@ -25,6 +25,7 @@ class OnePieceController extends Controller
 
     public function getColored(string $chapterId): JsonResponse
     {
+        $chapterId = ltrim($chapterId, '0');
         $directory = "one_piece_colored/cap_$chapterId/";
         $images = Storage::files($directory);
 

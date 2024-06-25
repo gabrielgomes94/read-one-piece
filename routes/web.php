@@ -26,3 +26,4 @@ Route::get('/historias-de-capa', [CoverStoriesController::class, 'list']);
 
 Route::get('/historia-de-capa', [CoverStoriesController::class, 'get']);
 Route::get('/download', [DownloadController::class, 'get']);
+Route::get('/downloads', [DownloadController::class, 'list']);

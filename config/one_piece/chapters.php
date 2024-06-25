@@ -1010,7 +1010,7 @@ return [
         1007 => 'Sr. Tanuki',
         1008 => 'Ashura Doji, líder da Gangue dos Ladrões do Monte Atama',
         1009 => 'Inferno',
-        1010 => 'Fluido real',
+        1010 => 'Haki do rei',
         1011 => 'Moralidade do feijão vermelho',
         1012 => 'Coceira',
         1013 => 'Anarquia no BM',

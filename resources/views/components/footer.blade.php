@@ -21,12 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/historias-de-capa" class="hover:text-yellow-300">
-                        Sagas e arcos
-                    </a>
-                </li>
-                <li>
-                    <a href="/manga" class="hover:text-yellow-300">
+                    <a href="/downloads" class="hover:text-yellow-300">
                         Downloads
                     </a>
                 </li>

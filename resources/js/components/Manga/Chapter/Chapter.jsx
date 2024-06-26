@@ -1,9 +1,9 @@
 import React from "react";
 import Page from "./Page/Page.jsx";
 import useKeyboardInput from "../../../hooks/useKeyboardInput.js"
-import {Share} from "./Buttons/Share.jsx";
 import ChapterNavigation from "./Navigation/ChapterNavigation.jsx";
-import {Download} from "./Buttons/Download.jsx";
+import VerticalToolset from "./Tools/VerticalToolset.jsx";
+import HorizontalToolset from "./Tools/HorizontalToolset.jsx";
 
 export default function Chapter(
     {
@@ -36,29 +36,36 @@ export default function Chapter(
                     />
                 </div>
 
-                <div className="flex flex-col justify-end items-end mb-4 mr-4">
-                    <div className="my-2">
-                        <Share
-                            chapterId={chapterId}
-                            currentPage={currentPage}
-                        />
-                    </div>
-
-                    <div className="mt-2">
-                        <Download
-                            chapterId={chapterId}
-                        />
-                    </div>
+                <div className="md:flex md:flex-col sm:hidden
+                                justify-end items-end
+                                mb-4 mr-4"
+                >
+                    <VerticalToolset
+                        chapterId={chapterId}
+                        currentPage={currentPage}
+                    />
                 </div>
             </div>
 
-            <ChapterNavigation
-                currentPage={currentPage}
-                images={images}
-                handleNextPage={handleNextPage}
-                handlePreviousPage={handlePreviousPage}
-                setCurrentPage={setCurrentPage}
-            />
+            <div className="md:flex md:flex-col sm:hidden">
+                <ChapterNavigation
+                    currentPage={currentPage}
+                    images={images}
+                    handleNextPage={handleNextPage}
+                    handlePreviousPage={handlePreviousPage}
+                    setCurrentPage={setCurrentPage}
+                />
+            </div>
+
+            <div className="md:hidden sm:flex sm:flex-row
+                            justify-end items-end
+                            m-auto
+            ">
+                <HorizontalToolset
+                    chapterId={chapterId}
+                    currentPage={currentPage}
+                />
+            </div>
         </div>
     );
 }

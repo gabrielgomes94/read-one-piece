@@ -4,9 +4,11 @@ import { CookiesProvider, useCookies } from 'react-cookie'
 import { getChapterCookie, getPageCookie } from '../utils/cookies.js';
 
 export function App(
-    listChaptersURI
+    {
+        listChaptersURI
+    }
 ) {
-    const [uri, setUri] = useState(listChaptersURI['listChaptersURI'])
+    const [uri, setUri] = useState(listChaptersURI)
     const [cookies, setCookie] = useCookies([uri + '_chapter', uri + '_page'])
     const mangaData = document.getElementById('manga-data');
 
@@ -38,7 +40,7 @@ export function App(
     return (
         <CookiesProvider>
             <Manga
-                listChaptersURI={listChaptersURI['listChaptersURI']}
+                listChaptersURI={listChaptersURI}
                 chapterId={chapter()}
                 page={page() - 1}
                 setCookie={setCookie}

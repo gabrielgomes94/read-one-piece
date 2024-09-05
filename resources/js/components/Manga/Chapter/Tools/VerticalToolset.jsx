@@ -4,9 +4,13 @@ import {Download} from "../Buttons/Download.jsx";
 import React from "react";
 
 export default function VerticalToolset(
-    chapterId,
-    currentPage
+    {
+        chapterId,
+        currentPage
+    }
 ) {
+    console.log(chapterId)
+
     return (
         <>
             <div className="mt-2">

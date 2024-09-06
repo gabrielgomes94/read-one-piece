@@ -34,7 +34,7 @@ export default function Page(
             <Loading isLoading={loading}/>
 
             <img
-                className="object-cover max-w-full max-h-full shadow-2xl"
+                className="object-cover shadow-2xl"
                 id="current-page"
                 key={currentPage}
                 src={source}

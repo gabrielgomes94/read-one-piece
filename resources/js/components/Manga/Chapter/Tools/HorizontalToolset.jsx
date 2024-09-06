@@ -4,27 +4,29 @@ import {Download} from "../Buttons/Download.jsx";
 import React from "react";
 
 export default function HorizontalToolset(
-    chapterId,
-    currentPage
+    {
+        chapterId,
+        currentPage
+    }
 ) {
     return (
-        <>
-            <div className="mx-2">
+        <div className="flex justify-between space-x-1">
+            <div className="">
                 <ChangeColors chapterId={chapterId}/>
             </div>
 
-            <div className="mx-2">
+            <div className="">
                 <Share
                     chapterId={chapterId}
                     currentPage={currentPage}
                 />
             </div>
 
-            <div className="mx-2">
+            <div className="">
                 <Download
                     chapterId={chapterId}
                 />
             </div>
-        </>
+        </div>
     )
 }

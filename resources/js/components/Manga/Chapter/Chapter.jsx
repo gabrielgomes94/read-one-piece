@@ -36,7 +36,7 @@ export default function Chapter(
                     />
                 </div>
 
-                <div className="md:flex md:flex-col sm:hidden
+                <div className="lg:flex lg:flex-col hidden
                                 justify-end items-end
                                 mb-4 mr-4"
                 >
@@ -47,7 +47,7 @@ export default function Chapter(
                 </div>
             </div>
 
-            <div className="md:flex md:flex-col sm:hidden">
+            <div className="sm:flex sm:flex-col hidden">
                 <ChapterNavigation
                     currentPage={currentPage}
                     images={images}
@@ -57,9 +57,10 @@ export default function Chapter(
                 />
             </div>
 
-            <div className="md:hidden sm:flex sm:flex-row
+            <div className="lg:hidden md:flex md:flex-row
                             justify-end items-end
                             m-auto
+                            w-100
             ">
                 <HorizontalToolset
                     chapterId={chapterId}

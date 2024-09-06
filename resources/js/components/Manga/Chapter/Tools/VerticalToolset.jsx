@@ -9,26 +9,24 @@ export default function VerticalToolset(
         currentPage
     }
 ) {
-    console.log(chapterId)
-
     return (
-        <>
-            <div className="mt-2">
+        <div className="flex flex-col justify-between space-y-2">
+            <div>
                 <ChangeColors chapterId={chapterId}/>
             </div>
 
-            <div className="my-2">
+            <div>
                 <Share
                     chapterId={chapterId}
                     currentPage={currentPage}
                 />
             </div>
 
-            <div className="mt-2">
+            <div>
                 <Download
                     chapterId={chapterId}
                 />
             </div>
-        </>
+        </div>
     )
 }

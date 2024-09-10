@@ -28,11 +28,9 @@
             </menu>
 
             <div class="flex flex-col justify-items-center items-center">
-                <img src="pix-qrcode.svg" width="124">
-
                 <span class="text-lg">
                     Ajude a manter o site no ar e sem anúncios! <br>
-                    Faça um pix para <b>leiaonepiece@gmail.com</b>
+                    Faça um pix de qualquer valor para <b>leiaonepiece@gmail.com</b>
                 </span>
             </div>
         </div>

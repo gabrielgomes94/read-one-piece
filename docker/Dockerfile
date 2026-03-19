@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 # Instala dependências do sistema e extensões PHP
 RUN apt-get update && apt-get install -y \

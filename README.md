@@ -16,8 +16,18 @@ Built with Laravel, Vite and React.
 - Set filesystem driver to `public`. Set env var `FILESYSTEM_DISK` to `public`.
 - Upload manga files to `storage/app/public/manga` and organize mangás using the following pattern: `cap_XXXX`, where `XXXX` is the chapter number with 0 paddings on left, e.g. `cap_0001`.
 
+php artisan storage:link
+
+
 ## NGINX
 
 - Install PHP
 - Install Nginx
 - Configure Nginx file
+
+
+## Content
+
+- Rsync para enviar as imagens
+
+rsync -avh /media/gabriel/HD/Projetos/leia-one-piece-conteudo/public-new gabriel@192.168.0.243:/home/gabriel/read-one-piece
